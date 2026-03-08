@@ -380,7 +380,19 @@ body.light .az-rank-1{background:rgba(90,138,0,.12);border-color:rgba(90,138,0,.
 .az-diff-pill.even{background:rgba(200,241,53,.07);border:1px solid rgba(200,241,53,.2);color:var(--accent);}
 body.light .az-diff-pill.even{color:var(--accent);}
 
-/* BALANCE NOTE */
+/* PER-LEG GENDER SELECTORS */
+.leg-gender-row{display:none;max-width:560px;margin-top:12px;margin-bottom:0;background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.leg-gender-row.show{display:block;}
+.leg-gender-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+@media(max-width:500px){.leg-gender-grid{grid-template-columns:repeat(2,1fr);}}
+.lgcell{padding:10px 12px;border-right:1px solid var(--border);}
+.lgcell:last-child{border-right:none;}
+.lgcell-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.lgbtns{display:flex;gap:4px;}
+.lgbtn{flex:1;padding:4px 0;background:transparent;border:1px solid var(--border);border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .15s;}
+.lgbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(200,241,53,.06);}
+body.light .lgbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(90,138,0,.08);}
+.leg-gender-note{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.06em;color:var(--muted);padding:7px 12px;border-top:1px solid var(--border);}
 .az-balance{margin-top:18px;padding:14px 18px;background:rgba(200,241,53,.03);border:1px solid rgba(200,241,53,.10);border-radius:4px;font-size:12px;color:var(--muted);line-height:1.7;animation:up .38s cubic-bezier(.22,1,.36,1) .35s both;}
 .az-balance strong{color:var(--text);font-weight:600;}
 body.light .az-balance{background:rgba(90,138,0,.03);border-color:rgba(90,138,0,.12);}
@@ -418,6 +430,40 @@ body.light .az-balance{background:rgba(90,138,0,.03);border-color:rgba(90,138,0,
     <button class="gbtn active" id="btn-M" onclick="setG('M')">&#9794; Men</button>
     <button class="gbtn" id="btn-F" onclick="setG('F')">&#9792; Women</button>
     <button class="gbtn" id="btn-MX" onclick="setG('MX')">Mixed</button>
+  </div>
+  <!-- Per-leg gender selectors (Mixed only) -->
+  <div class="leg-gender-row" id="leg-gender-row">
+    <div class="leg-gender-grid">
+      <div class="lgcell">
+        <div class="lgcell-lbl">1200m</div>
+        <div class="lgbtns">
+          <button class="lgbtn active" id="lg0-M" onclick="setLG(0,'M')">&#9794; M</button>
+          <button class="lgbtn" id="lg0-F" onclick="setLG(0,'F')">&#9792; W</button>
+        </div>
+      </div>
+      <div class="lgcell">
+        <div class="lgcell-lbl">400m</div>
+        <div class="lgbtns">
+          <button class="lgbtn active" id="lg1-M" onclick="setLG(1,'M')">&#9794; M</button>
+          <button class="lgbtn" id="lg1-F" onclick="setLG(1,'F')">&#9792; W</button>
+        </div>
+      </div>
+      <div class="lgcell">
+        <div class="lgcell-lbl">800m</div>
+        <div class="lgbtns">
+          <button class="lgbtn active" id="lg2-M" onclick="setLG(2,'M')">&#9794; M</button>
+          <button class="lgbtn" id="lg2-F" onclick="setLG(2,'F')">&#9792; W</button>
+        </div>
+      </div>
+      <div class="lgcell">
+        <div class="lgcell-lbl">1600m</div>
+        <div class="lgbtns">
+          <button class="lgbtn active" id="lg3-M" onclick="setLG(3,'M')">&#9794; M</button>
+          <button class="lgbtn" id="lg3-F" onclick="setLG(3,'F')">&#9792; W</button>
+        </div>
+      </div>
+    </div>
+    <div class="leg-gender-note">Set the gender for each runner individually — each leg is compared to the correct world record.</div>
   </div>
   <div class="errmsg" id="em">&#9888; Enter a valid time first.</div>
   <button class="cbtn" onclick="calc()">
@@ -570,6 +616,16 @@ body.light .az-balance{background:rgba(90,138,0,.03);border-color:rgba(90,138,0,
       <button class="gbtn" id="abtn-F" onclick="setAG('F')">&#9792; Women</button>
       <button class="gbtn" id="abtn-MX" onclick="setAG('MX')">Mixed</button>
     </div>
+    <!-- Per-leg gender selectors for analyze (Mixed only) -->
+    <div class="leg-gender-row" id="az-leg-gender-row">
+      <div class="leg-gender-grid">
+        <div class="lgcell"><div class="lgcell-lbl">1200m</div><div class="lgbtns"><button class="lgbtn active" id="alg0-M" onclick="setALG(0,'M')">&#9794; M</button><button class="lgbtn" id="alg0-F" onclick="setALG(0,'F')">&#9792; W</button></div></div>
+        <div class="lgcell"><div class="lgcell-lbl">400m</div><div class="lgbtns"><button class="lgbtn active" id="alg1-M" onclick="setALG(1,'M')">&#9794; M</button><button class="lgbtn" id="alg1-F" onclick="setALG(1,'F')">&#9792; W</button></div></div>
+        <div class="lgcell"><div class="lgcell-lbl">800m</div><div class="lgbtns"><button class="lgbtn active" id="alg2-M" onclick="setALG(2,'M')">&#9794; M</button><button class="lgbtn" id="alg2-F" onclick="setALG(2,'F')">&#9792; W</button></div></div>
+        <div class="lgcell"><div class="lgcell-lbl">1600m</div><div class="lgbtns"><button class="lgbtn active" id="alg3-M" onclick="setALG(3,'M')">&#9794; M</button><button class="lgbtn" id="alg3-F" onclick="setALG(3,'F')">&#9792; W</button></div></div>
+      </div>
+      <div class="leg-gender-note">Set the gender for each runner individually — each leg is compared to the correct world record.</div>
+    </div>
   </div>
 
   <!-- four input cards -->
@@ -662,9 +718,45 @@ function getColor(i){return document.body.classList.contains('light')?COLORS_LIG
 
 let gender='M', wOn=false, lOn=false, prOn=false, histOn=false, namesOn=false, benchOn=false;
 let unitSpeed='ms', unitPace='p400';
+let legGenders=['M','M','M','M'];       // per-leg gender for calc mode (Mixed)
+let azLegGenders=['M','M','M','M'];     // per-leg gender for analyze mode (Mixed)
 
 // ── Toggles ───────────────────────────────────────────────────────────────────
-function setG(g){gender=g;['M','F','MX'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('active',x===g));}
+function setG(g){
+  gender=g;
+  ['M','F','MX'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('active',x===g));
+  document.getElementById('leg-gender-row').classList.toggle('show',g==='MX');
+}
+// ── Mode switcher & analyze gender ───────────────────────────────────────────
+let analyzeGender='M';
+function setMode(m){
+  ['calc','analyze'].forEach(x=>{
+    document.getElementById('tab-'+x).classList.toggle('active',x===m);
+    document.getElementById('page-'+x).classList.toggle('active',x===m);
+  });
+}
+function setAG(g){
+  analyzeGender=g;
+  ['M','F','MX'].forEach(x=>document.getElementById('abtn-'+x).classList.toggle('active',x===g));
+  document.getElementById('az-leg-gender-row').classList.toggle('show',g==='MX');
+}
+function setLG(i,g){
+  legGenders[i]=g;
+  ['M','F'].forEach(x=>document.getElementById('lg'+i+'-'+x).classList.toggle('active',x===g));
+}
+function setALG(i,g){
+  azLegGenders[i]=g;
+  ['M','F'].forEach(x=>document.getElementById('alg'+i+'-'+x).classList.toggle('active',x===g));
+}
+function getWRForLeg(i){
+  // Returns the WR reference time for leg i, respecting per-leg gender in Mixed mode
+  if(gender==='MX') return WR[legGenders[i]][LEGS[i].dist];
+  return WR[gender][LEGS[i].dist];
+}
+function getAWRForLeg(i){
+  if(analyzeGender==='MX') return WR[azLegGenders[i]][LEGS[i].dist];
+  return WR[analyzeGender][LEGS[i].dist];
+}
 function togW(){wOn=!wOn;document.getElementById('sw').classList.toggle('on',wOn);document.getElementById('wp').classList.toggle('open',wOn);}
 function togL(){lOn=!lOn;document.getElementById('swl').classList.toggle('on',lOn);document.getElementById('lp').classList.toggle('open',lOn);}
 function togPR(){prOn=!prOn;document.getElementById('swpr').classList.toggle('on',prOn);document.getElementById('prp').classList.toggle('open',prOn);}
@@ -851,7 +943,6 @@ function calc(){
   if(!total||total<=0){document.getElementById('em').style.display='block';document.getElementById('res').classList.remove('on');return;}
   document.getElementById('em').style.display='none';
 
-  const wr=WR[gender];
   const lockErr=document.getElementById('lock-err');
   lockErr.classList.remove('show');
 
@@ -863,11 +954,12 @@ function calc(){
 
   if(unlockedIndices.length===0){
     const lockedSum=lockedSecs.reduce((a,b)=>a+b,0);
+    const legWRs=LEGS.map((_,i)=>getWRForLeg(i));
     document.getElementById('rtotal').textContent=fmt(lockedSum);
     document.getElementById('etxt').textContent='Just so you know, a regular calculator would have worked fine here.';
-    _lastSplits=lockedSecs;_lastWR=wr;
-    renderCards(lockedSecs,wr,LEGS.map(()=>0),LEGS.map(()=>true));
-    renderTable(lockedSecs,wr);renderCumulative(lockedSecs);renderBenchLadder(lockedSum);
+    _lastSplits=lockedSecs;_lastWR=legWRs;
+    renderCards(lockedSecs,legWRs,LEGS.map(()=>0),LEGS.map(()=>true));
+    renderTable(lockedSecs,legWRs);renderCumulative(lockedSecs);renderBenchLadder(lockedSum);
     document.getElementById('mnote').innerHTML='<strong>All four legs were pinned.</strong> The total is just the sum of your inputs — no distribution needed. You could have used a calculator for this one, but hey, the splits look great.';
     document.getElementById('res').classList.add('on');
     setTimeout(()=>document.getElementById('res').scrollIntoView({behavior:'smooth',block:'start'}),50);
@@ -875,17 +967,19 @@ function calc(){
   }
 
   const remaining=total-lockedTotal;
-  const unlockedWRSum=unlockedIndices.reduce((a,i)=>a+wr[LEGS[i].dist],0);
+  // Per-leg WR references (respects Mixed per-leg gender)
+  const legWRs=LEGS.map((_,i)=>getWRForLeg(i));
+  const unlockedWRSum=unlockedIndices.reduce((a,i)=>a+legWRs[i],0);
   const baseK=remaining/unlockedWRSum;
   const adjs=LEGS.map((_,i)=>wOn?parseInt(document.getElementById('w'+i).value)/100:0);
-  const rawUnlocked=unlockedIndices.map(i=>baseK*wr[LEGS[i].dist]*(1-adjs[i]));
+  const rawUnlocked=unlockedIndices.map(i=>baseK*legWRs[i]*(1-adjs[i]));
   const rawUnlockedSum=rawUnlocked.reduce((a,b)=>a+b,0);
   const scale=remaining/rawUnlockedSum;
   const splits=LEGS.map((l,i)=>{if(isLocked(i))return lockedSecs[i];const ui=unlockedIndices.indexOf(i);return rawUnlocked[ui]*scale;});
 
-  _lastSplits=splits;_lastWR=wr;
+  _lastSplits=splits;_lastWR=legWRs;
 
-  const wrTotal=LEGS.reduce((a,l)=>a+wr[l.dist],0);
+  const wrTotal=legWRs.reduce((a,b)=>a+b,0);
   const pctPace=(wrTotal/total)*100;
   let elevel='';
   if(pctPace>=95) elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — Elite / National`;
@@ -896,12 +990,12 @@ function calc(){
   document.getElementById('rtotal').textContent=fmt(total);
   document.getElementById('etxt').textContent=elevel;
 
-  renderCards(splits,wr,adjs,LEGS.map((_,i)=>isLocked(i)));
-  renderTable(splits,wr);
+  renderCards(splits,legWRs,adjs,LEGS.map((_,i)=>isLocked(i)));
+  renderTable(splits,legWRs);
   renderCumulative(splits);
   renderBenchLadder(total);
 
-  const gn={M:"men's",F:"women's",MX:"mixed"}[gender];
+  const gn=gender==='MX'?'mixed (per-leg)':gender==='M'?"men's":"women's";
   document.getElementById('mnote').innerHTML=`<strong>How this works:</strong> Splits are set so every runner performs at the same percentage of the ${gn} world record for their event — currently <strong>${pctPace.toFixed(1)}% of WR pace</strong>. The 400m WR pace is dramatically faster than the 1600m WR pace, so this model correctly gives the 400m runner a much harder (faster) split relative to their event.`;
 
   const names=LEGS.map((_,i)=>getRunnerName(i));
@@ -913,13 +1007,14 @@ function calc(){
 }
 
 // ── Render helpers ────────────────────────────────────────────────────────────
-function renderCards(splits,wr,adjs,locked){
+function renderCards(splits,legWRs,adjs,locked){
   const grid=document.getElementById('lgrid');grid.innerHTML='';
   splits.forEach((sp,i)=>{
     const l=LEGS[i];
+    const wrRef=Array.isArray(legWRs)?legWRs[i]:legWRs[l.dist];
     const mps=l.dist/sp;
-    const pctLeg=((wr[l.dist]/sp)*100).toFixed(1);
-    const barW=Math.min((wr[l.dist]/sp)*100,100).toFixed(1);
+    const pctLeg=((wrRef/sp)*100).toFixed(1);
+    const barW=Math.min((wrRef/sp)*100,100).toFixed(1);
     const lo=sp*0.95,hi=sp*1.05;
     const rangeLine=`<div class="range-band">Range: <span>${fmt(lo)}</span> – <span>${fmt(hi)}</span></div>`;
 
@@ -948,12 +1043,13 @@ function renderCards(splits,wr,adjs,locked){
   });
 }
 
-function renderTable(splits,wr){
+function renderTable(splits,legWRs){
   const tb=document.getElementById('stbody');tb.innerHTML='';
   splits.forEach((sp,i)=>{
     const l=LEGS[i];const mps=l.dist/sp;
+    const wrRef=Array.isArray(legWRs)?legWRs[i]:legWRs[l.dist];
     const r=document.createElement('div');r.className='strow';
-    r.innerHTML=`<span class="stn">${l.name}</span><span class="sts">${fmt(sp)}</span><span>${fmtPace(sp,l.dist)}</span><span>${fmtSpeed(mps)}</span><span class="stp">${((wr[l.dist]/sp)*100).toFixed(1)}%</span>`;
+    r.innerHTML=`<span class="stn">${l.name}</span><span class="sts">${fmt(sp)}</span><span>${fmtPace(sp,l.dist)}</span><span>${fmtSpeed(mps)}</span><span class="stp">${((wrRef/sp)*100).toFixed(1)}%</span>`;
     tb.appendChild(r);
   });
 }
@@ -984,19 +1080,6 @@ function togTheme(){
     document.getElementById('theme-lbl').textContent='Dark';
   }
 })();
-// ── Mode switcher ─────────────────────────────────────────────────────────────
-let analyzeGender='M';
-function setMode(m){
-  ['calc','analyze'].forEach(x=>{
-    document.getElementById('tab-'+x).classList.toggle('active',x===m);
-    document.getElementById('page-'+x).classList.toggle('active',x===m);
-  });
-}
-function setAG(g){
-  analyzeGender=g;
-  ['M','F','MX'].forEach(x=>document.getElementById('abtn-'+x).classList.toggle('active',x===g));
-}
-
 // ── Analyzer ──────────────────────────────────────────────────────────────────
 function getAZSecs(i){
   const m=parseInt(document.getElementById('am'+i).value)||0;
@@ -1008,18 +1091,19 @@ function getAZSecs(i){
 function analyze(){
   const azErr=document.getElementById('az-em');
   azErr.style.display='none';
-  const wr=WR[analyzeGender];
   const splits=LEGS.map((_,i)=>getAZSecs(i));
   const names=LEGS.map((_,i)=>document.getElementById('an'+i).value.trim());
   if(splits.filter(s=>s!==null).length<4){azErr.style.display='block';return;}
 
   const total=splits.reduce((a,b)=>a+b,0);
-  const pcts=splits.map((sp,i)=>(wr[LEGS[i].dist]/sp)*100);
+  // Per-leg WR references
+  const legWRs=LEGS.map((_,i)=>getAWRForLeg(i));
+  const pcts=splits.map((sp,i)=>(legWRs[i]/sp)*100);
   const avgPct=pcts.reduce((a,b)=>a+b,0)/4;
   const maxPct=Math.max(...pcts);
   const minPct=Math.min(...pcts);
   const spread=maxPct-minPct;
-  const eqSplits=LEGS.map((l)=>wr[l.dist]/avgPct*100);
+  const eqSplits=LEGS.map((_,i)=>legWRs[i]/avgPct*100);
   const eqTotal=eqSplits.reduce((a,b)=>a+b,0);
   const hardestIdx=pcts.indexOf(maxPct);
   const easiestIdx=pcts.indexOf(minPct);
@@ -1077,7 +1161,7 @@ function analyze(){
   // Balance summary
   const hardName=names[hardestIdx]||LEGS[hardestIdx].name;
   const easyName=names[easiestIdx]||LEGS[easiestIdx].name;
-  const gn={M:"men's",F:"women's",MX:"mixed"}[analyzeGender];
+  const gn=analyzeGender==='MX'?'mixed (per-leg)':analyzeGender==='M'?"men's":"women's";
   const timeDiff=Math.abs(total-eqTotal);
   const eqNote=timeDiff<0.1
     ?`The team's total of <strong>${fmt(total)}</strong> is essentially identical to what an equal-effort lineup would have run.`
