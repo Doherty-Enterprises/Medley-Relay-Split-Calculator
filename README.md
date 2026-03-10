@@ -3,9 +3,11 @@ A split calculator and performance analyzer for medley relay events in track and
 
 View Live → https://doherty-enterprises.github.io/Medley-Relay-Split-Calculator/
 
+
 Events
 
 EventLegsDMR — Distance Medley Relay1200m · 400m · 800m · 1600mSMR Short — Sprint Medley Relay100m · 100m · 200m · 400mSMR Long — Sprint Medley Relay200m · 200m · 400m · 800m
+
 
 What It Does
 
@@ -14,6 +16,7 @@ Two modes for each event:
 Calculate Splits — Enter a target finish time and get a realistic split for each leg, based on equal physiological effort across all four runners.
 
 Analyze Performance — Enter your team's actual splits from a completed race and see how evenly the workload was distributed, who ran the hardest and easiest legs, and how the team performed relative to world record pace.
+
 
 The Math
 
@@ -27,11 +30,13 @@ k = target_time / sum_of_all_four_WRs
 
 At k = 1.0, every runner is at world record pace. At k = 1.25, every runner is at 80% of their event's WR — equal physiological effort regardless of distance or event type.
 
+
 World Records Used
 
 DistanceMenWomenNote100m9.58s10.49sBolt (2009) / Griffith-Joyner (1988)200m19.19s21.34sBolt (2009) / Griffith-Joyner (1988)400m43.03s47.60svan Niekerk (2016) / Koch (1985)800m1:40.911:53.28Rudisha (2012) / Kratochvílová (1983)1200m2:43.03:01.0Derived via Riegel from 1500m WR*1600m3:41.84:06.2Scaled from mile WR*
 
 *The 1200m and 1600m are not sanctioned World Athletics events. Reference times are mathematically derived from adjacent world records.
+
 
 Features
 
@@ -73,6 +78,7 @@ Team balance rating and written summary
 
 Equal-effort equivalent total time
 
+
 Display
 
 Light and dark mode with persistent preference
@@ -86,12 +92,19 @@ Download index.html and open it in any modern browser. No server required.
 
 Or visit the live version linked above.
 
+
 About
 
 Built by Kyle Doherty, a cross country and track & field runner at El Toro High School. The methodology was reviewed by national-qualifying athletes and coaches before release.
 
+
 For bugs, suggestions, or questions: kyledoherty281@gmail.com
 
-Assisted by agent Claude
+
 Vanilla HTML, CSS, and JavaScript — no frameworks, no build tools
+
+
 Barlow Condensed and Share Tech Mono via Google Fonts
+
+
+Assisted by the AI agent Claude
