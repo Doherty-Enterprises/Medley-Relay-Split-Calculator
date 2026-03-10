@@ -1,5 +1,6 @@
 Readme · MDCopyMedley Relay Split Calculator
 A split calculator and performance analyzer for medley relay events in track and field. Covers the Distance Medley Relay (DMR), Sprint Medley Relay Short (100-100-200-400), and Sprint Medley Relay Long (200-200-400-800). Built as a single self-contained HTML file — no installation, no dependencies, no internet required after the page loads.
+
 View Live → https://doherty-enterprises.github.io/Medley-Relay-Split-Calculator/
 
 Events
