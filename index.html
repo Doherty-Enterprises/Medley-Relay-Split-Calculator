@@ -2,113 +2,122 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzBkMGUxMCIvPgogIDxyZWN0IHg9IjAiIHk9IjI4IiB3aWR0aD0iMzIiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNjOGYxMzUiIG9wYWNpdHk9IjAuNCIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjYzhmMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iLTEiPk08L3RleHQ+Cjwvc3ZnPg==">
+<link rel="alternate icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzBkMGUxMCIvPgogIDxyZWN0IHg9IjAiIHk9IjI4IiB3aWR0aD0iMzIiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNjOGYxMzUiIG9wYWNpdHk9IjAuNCIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjYzhmMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iLTEiPk08L3RleHQ+Cjwvc3ZnPg==">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DMR Split Calculator</title>
+<title>Medley Relay Split Calculator — DMR &amp; SMR</title>
+<meta name="description" content="Free split calculator and performance analyzer for medley relay events. Covers the Distance Medley Relay (DMR), Sprint Medley Relay Short (100-100-200-400), and Sprint Medley Relay Long (200-200-400-800). Uses world record pace ratios for accurate, equal-effort splits.">
+<meta name="keywords" content="DMR calculator, distance medley relay calculator, DMR splits, distance medley relay splits, SMR calculator, sprint medley relay calculator, SMR splits, sprint medley relay splits, medley relay split calculator, track relay calculator, relay split calculator, track and field calculator, DMR pace calculator, SMR pace calculator, distance medley relay, sprint medley relay">
+<meta name="author" content="Doherty Enterprises">
+<meta property="og:title" content="Medley Relay Split Calculator — DMR &amp; SMR">
+<meta property="og:description" content="Calculate realistic splits for Distance Medley Relay (DMR) and Sprint Medley Relay (SMR) events using world record pace ratios. Includes performance analyzer, runner weights, PR check, benchmarks, and more. Free, no install required.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
+/* ── VARIABLES ─────────────────────────────────────────────────────────────── */
 :root{--bg:#0d0e10;--surface:#15171a;--surface2:#1e2025;--border:#2a2d33;--accent:#c8f135;--muted:#5a5f6b;--text:#e8eaed;--text2:#9aa0ad;--red:#ff5a5a;--amber:#f5a623;--green:#7ee8a2;}
 body.light{--bg:#f4f5f0;--surface:#ffffff;--surface2:#eef0ea;--border:#d4d8cc;--accent:#5a8a00;--muted:#8a9278;--text:#1a1e14;--text2:#4a5240;--red:#cc2200;--amber:#b86800;--green:#2a7a40;}
-body.light::before{background:repeating-linear-gradient(to bottom,transparent 0,transparent 59px,rgba(0,0,0,0.03) 59px,rgba(0,0,0,0.03) 60px);}
-body.light .lcard:nth-child(1)::after{background:#5a8a00;opacity:.06;}
-body.light .lcard:nth-child(2)::after{background:#0080c0;opacity:.06;}
-body.light .lcard:nth-child(3)::after{background:#c06000;opacity:.06;}
-body.light .lcard:nth-child(4)::after{background:#7040c0;opacity:.06;}
-body.light .lcard:nth-child(1){border-top-color:#5a8a00;}
-body.light .lcard:nth-child(2){border-top-color:#0080c0;}
-body.light .lcard:nth-child(3){border-top-color:#c06000;}
-body.light .lcard:nth-child(4){border-top-color:#7040c0;}
-body.light .lcard:nth-child(1) .ldist{color:#5a8a00;}
-body.light .lcard:nth-child(2) .ldist{color:#0080c0;}
-body.light .lcard:nth-child(3) .ldist{color:#c06000;}
-body.light .lcard:nth-child(4) .ldist{color:#7040c0;}
-body.light .lcard:nth-child(1) .ebar-fill{background:#5a8a00;}
-body.light .lcard:nth-child(2) .ebar-fill{background:#0080c0;}
-body.light .lcard:nth-child(3) .ebar-fill{background:#c06000;}
-body.light .lcard:nth-child(4) .ebar-fill{background:#7040c0;}
-body.light .strow:nth-child(1) .stn{color:#5a8a00;}
-body.light .strow:nth-child(2) .stn{color:#0080c0;}
-body.light .strow:nth-child(3) .stn{color:#c06000;}
-body.light .strow:nth-child(4) .stn{color:#7040c0;}
-body.light .wrow:nth-child(2) .wlbl{color:#5a8a00;}body.light .wrow:nth-child(3) .wlbl{color:#0080c0;}body.light .wrow:nth-child(4) .wlbl{color:#c06000;}body.light .wrow:nth-child(5) .wlbl{color:#7040c0;}
-body.light .wrow:nth-child(2) .wslider{accent-color:#5a8a00;}body.light .wrow:nth-child(3) .wslider{accent-color:#0080c0;}body.light .wrow:nth-child(4) .wslider{accent-color:#c06000;}body.light .wrow:nth-child(5) .wslider{accent-color:#7040c0;}
-body.light .lockrow:nth-child(2).active .locklbl{color:#5a8a00;}body.light .lockrow:nth-child(3).active .locklbl{color:#0080c0;}body.light .lockrow:nth-child(4).active .locklbl{color:#c06000;}body.light .lockrow:nth-child(5).active .locklbl{color:#7040c0;}
-body.light .lockrow:nth-child(2) .lockcheck:checked{background:#5a8a00;border-color:#5a8a00;}body.light .lockrow:nth-child(3) .lockcheck:checked{background:#0080c0;border-color:#0080c0;}body.light .lockrow:nth-child(4) .lockcheck:checked{background:#c06000;border-color:#c06000;}body.light .lockrow:nth-child(5) .lockcheck:checked{background:#7040c0;border-color:#7040c0;}
-body.light .prrow:nth-child(2) .prlbl{color:#5a8a00;}body.light .prrow:nth-child(3) .prlbl{color:#0080c0;}body.light .prrow:nth-child(4) .prlbl{color:#c06000;}body.light .prrow:nth-child(5) .prlbl{color:#7040c0;}
-body.light .namerow:nth-child(2) .namelbl{color:#5a8a00;}body.light .namerow:nth-child(3) .namelbl{color:#0080c0;}body.light .namerow:nth-child(4) .namelbl{color:#c06000;}body.light .namerow:nth-child(5) .namelbl{color:#7040c0;}
-body.light .gbtn.active{border-color:#5a8a00;color:#5a8a00;background:rgba(90,138,0,.08);}
-body.light .cbtn{background:#5a8a00;color:#fff;}
-body.light .cbtn:hover{background:#4a7400;box-shadow:0 6px 20px rgba(90,138,0,.22);}
-body.light .ebadge{background:rgba(90,138,0,.07);border-color:rgba(90,138,0,.22);color:#5a8a00;}
-body.light .edot{background:#5a8a00;}
-body.light .sw.on{background:rgba(90,138,0,.15);border-color:#5a8a00;}
-body.light .sw.on::after{background:#5a8a00;}
-body.light .bench-add-btn{background:#5a8a00;color:#fff;}
-body.light .bench-add-btn:hover{background:#4a7400;}
-body.light h1 span{color:#5a8a00;}
-body.light .eyebrow{color:#5a8a00;}
-body.light .eyebrow::before{background:#5a8a00;}
-body.light .strow .stp{color:#5a8a00;}
-body.light .cumrow:last-child .ctime{color:#5a8a00;}
-body.light .mnote{background:rgba(90,138,0,.04);border-color:rgba(90,138,0,.15);}
-body.light .mnote strong{color:#5a8a00;}
-body.light .copy-btn:hover{border-color:#5a8a00;color:#5a8a00;}
-body.light .ubtn.active{border-color:#5a8a00;color:#5a8a00;background:rgba(90,138,0,.08);}
-body.light .hist-time{color:#5a8a00;}
-body.light .brow.target-row{background:rgba(90,138,0,.05);border-left-color:#5a8a00;}
-body.light .brow.target-row .bname{color:#5a8a00;}
-body.light .rbig{color:#5a8a00;}
-/* Analyze section light mode overrides */
-body.light .az-card:nth-child(1){border-top-color:#5a8a00;}
-body.light .az-card:nth-child(2){border-top-color:#0080c0;}
-body.light .az-card:nth-child(3){border-top-color:#c06000;}
-body.light .az-card:nth-child(4){border-top-color:#7040c0;}
-body.light .az-card:nth-child(1) .az-dist{color:#5a8a00;}
-body.light .az-card:nth-child(2) .az-dist{color:#0080c0;}
-body.light .az-card:nth-child(3) .az-dist{color:#c06000;}
-body.light .az-card:nth-child(4) .az-dist{color:#7040c0;}
-body.light .az-card:nth-child(1) .az-nameinput:focus{border-color:#5a8a00;}
-body.light .az-card:nth-child(2) .az-nameinput:focus{border-color:#0080c0;}
-body.light .az-card:nth-child(3) .az-nameinput:focus{border-color:#c06000;}
-body.light .az-card:nth-child(4) .az-nameinput:focus{border-color:#7040c0;}
-body.light .az-card:nth-child(1) .az-timewrap:focus-within{border-color:#5a8a00;}
-body.light .az-card:nth-child(2) .az-timewrap:focus-within{border-color:#0080c0;}
-body.light .az-card:nth-child(3) .az-timewrap:focus-within{border-color:#c06000;}
-body.light .az-card:nth-child(4) .az-timewrap:focus-within{border-color:#7040c0;}
-body.light .az-lcard:nth-child(1){border-top-color:#5a8a00;}
-body.light .az-lcard:nth-child(2){border-top-color:#0080c0;}
-body.light .az-lcard:nth-child(3){border-top-color:#c06000;}
-body.light .az-lcard:nth-child(4){border-top-color:#7040c0;}
-body.light .az-lcard:nth-child(1)::after{background:#5a8a00;}
-body.light .az-lcard:nth-child(2)::after{background:#0080c0;}
-body.light .az-lcard:nth-child(3)::after{background:#c06000;}
-body.light .az-lcard:nth-child(4)::after{background:#7040c0;}
-body.light .az-bar-fill.b0{background:#5a8a00;}
-body.light .az-bar-fill.b1{background:#0080c0;}
-body.light .az-bar-fill.b2{background:#c06000;}
-body.light .az-bar-fill.b3{background:#7040c0;}
-body.light .az-diff-pill.even{border-color:rgba(90,138,0,.3);background:rgba(90,138,0,.06);}
-/* theme toggle button */
-.theme-btn{position:fixed;top:18px;right:20px;z-index:100;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px;}
-.theme-btn:hover{border-color:var(--muted);color:var(--text);}
-.theme-icon{font-size:14px;line-height:1;}
+body.light::before{background:repeating-linear-gradient(to bottom,transparent 0,transparent 59px,rgba(0,0,0,.03) 59px,rgba(0,0,0,.03) 60px);}
+
+/* ── BASE ──────────────────────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 59px,rgba(255,255,255,0.016) 59px,rgba(255,255,255,0.016) 60px);pointer-events:none;z-index:0;}
-.container{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:40px 24px 80px;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 59px,rgba(255,255,255,.016) 59px,rgba(255,255,255,.016) 60px);pointer-events:none;z-index:0;}
 
-/* HEADER */
+/* ── FIXED BUTTONS ─────────────────────────────────────────────────────────── */
+.ham{position:fixed;top:18px;left:20px;z-index:200;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:9px 10px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:all .15s;}
+.ham:hover{border-color:var(--muted);}
+.ham span{display:block;width:20px;height:2px;background:var(--text2);border-radius:1px;transition:all .2s;}
+.ham:hover span{background:var(--text);}
+.theme-btn{position:fixed;top:18px;right:20px;z-index:200;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px;}
+.theme-btn:hover{border-color:var(--muted);color:var(--text);}
+.theme-icon{font-size:14px;line-height:1;}
+
+/* ── NAV SIDEBAR ───────────────────────────────────────────────────────────── */
+.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;opacity:0;pointer-events:none;transition:opacity .25s;}
+.nav-overlay.on{opacity:1;pointer-events:all;}
+.nav-sidebar{position:fixed;top:0;left:0;bottom:0;width:290px;background:var(--surface);border-right:1px solid var(--border);z-index:400;transform:translateX(-100%);transition:transform .28s cubic-bezier(.22,1,.36,1);overflow-y:auto;}
+.nav-sidebar.on{transform:none;}
+.nav-logo{padding:22px 20px 16px;border-bottom:1px solid var(--border);}
+.nav-logo-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--text);line-height:1.2;}
+.nav-logo-sub{font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.nav-section{padding:10px 0;}
+.nav-sep{height:1px;background:var(--border);margin:4px 0;}
+.nav-section-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:8px 20px 4px;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:10px 20px;cursor:pointer;transition:background .1s;border-left:2px solid transparent;text-decoration:none;}
+.nav-item:hover{background:var(--surface2);}
+.nav-item.active{background:rgba(200,241,53,.05);border-left-color:var(--accent);}
+body.light .nav-item.active{background:rgba(90,138,0,.05);border-left-color:var(--accent);}
+.nav-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.nav-item-text{display:flex;flex-direction:column;gap:1px;}
+.nav-item-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);}
+.nav-item.active .nav-item-name{color:var(--accent);}
+.nav-item-sub{font-family:'Share Tech Mono',monospace;font-size:8.5px;color:var(--muted);letter-spacing:.06em;}
+
+/* ── SCREENS ───────────────────────────────────────────────────────────────── */
+.screen{display:none;position:relative;z-index:1;}
+.screen.active{display:block;}
+
+/* ── HOME SCREEN ───────────────────────────────────────────────────────────── */
+.home-wrap{max-width:880px;margin:0 auto;padding:80px 24px 80px;}
 .eyebrow{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
 .eyebrow::before{content:'';display:inline-block;width:24px;height:2px;background:var(--accent);}
+body.light .eyebrow{color:var(--accent);}
+body.light .eyebrow::before{background:var(--accent);}
 h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,8vw,80px);font-weight:900;line-height:.9;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px;}
 h1 span{color:var(--accent);display:block;}
-.header-sub{font-size:13.5px;color:var(--text2);max-width:560px;line-height:1.65;margin-bottom:40px;}
+body.light h1 span{color:var(--accent);}
+.header-sub{font-size:13.5px;color:var(--text2);max-width:560px;line-height:1.65;margin-bottom:44px;}
+.race-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:680px){.race-grid{grid-template-columns:1fr;}}
+.race-card{background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:22px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.race-card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25);}
+body.light .race-card:hover{box-shadow:0 10px 28px rgba(0,0,0,.1);}
+.race-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.race-card.r-dmr::before{background:#c8f135;}
+.race-card.r-smr-short::before{background:#38bdf8;}
+.race-card.r-smr-long::before{background:#fb923c;}
+.race-abbr-badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:12px;}
+.race-card.r-dmr .race-abbr-badge{background:rgba(200,241,53,.12);color:#c8f135;border:1px solid rgba(200,241,53,.3);}
+body.light .race-card.r-dmr .race-abbr-badge{background:rgba(90,138,0,.08);color:#5a8a00;border-color:rgba(90,138,0,.2);}
+.race-card.r-smr-short .race-abbr-badge{background:rgba(56,189,248,.12);color:#38bdf8;border:1px solid rgba(56,189,248,.3);}
+body.light .race-card.r-smr-short .race-abbr-badge{background:rgba(0,128,192,.08);color:#0080c0;border-color:rgba(0,128,192,.2);}
+.race-card.r-smr-long .race-abbr-badge{background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.3);}
+body.light .race-card.r-smr-long .race-abbr-badge{background:rgba(192,96,0,.08);color:#c06000;border-color:rgba(192,96,0,.2);}
+.race-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:var(--text);margin-bottom:3px;line-height:1.1;}
+.race-format{font-family:'Share Tech Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
+.race-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:18px;}
+.race-open{display:flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .15s;}
+.race-card:hover .race-open{color:var(--accent);}
 
-/* SECTION LABEL */
+/* ── CALCULATOR SCREEN ─────────────────────────────────────────────────────── */
+.calc-wrap{max-width:880px;margin:0 auto;padding:40px 24px 80px;}
+.back-btn{display:inline-flex;align-items:center;gap:7px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin-bottom:30px;transition:color .15s;}
+.back-btn:hover{color:var(--text);}
+.calc-eyebrow{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.calc-eyebrow::before{content:'';display:inline-block;width:24px;height:2px;background:var(--accent);}
+.calc-h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,7vw,72px);font-weight:900;line-height:.9;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:6px;}
+.calc-h1 span{color:var(--accent);display:block;}
+.calc-format-tag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.calc-sub{font-size:13px;color:var(--text2);max-width:540px;line-height:1.65;margin-bottom:36px;}
+body.light .calc-eyebrow{color:var(--accent);}
+body.light .calc-eyebrow::before{background:var(--accent);}
+body.light .calc-h1 span{color:var(--accent);}
+
+/* ── MODE SWITCHER ─────────────────────────────────────────────────────────── */
+.mode-switch{display:flex;gap:0;margin-bottom:40px;background:var(--surface);border:1px solid var(--border);border-radius:5px;overflow:hidden;max-width:400px;}
+.modeBtn{flex:1;padding:13px 0;background:transparent;border:none;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .2s;}
+.modeBtn.active{background:var(--accent);color:#0d0e10;}
+body.light .modeBtn.active{background:var(--accent);color:#fff;}
+.modeBtn:not(.active):hover{color:var(--text);}
+.mode-page{display:none;}.mode-page.active{display:block;}
+
+/* ── SECTION LABEL ─────────────────────────────────────────────────────────── */
 .slabel{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .slabel::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* TIME INPUT */
+/* ── TIME INPUT ────────────────────────────────────────────────────────────── */
 .target-sec{margin-bottom:36px;}
 .time-row{display:flex;align-items:stretch;background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;max-width:400px;transition:border-color .2s;}
 .time-row:focus-within{border-color:var(--accent);}
@@ -118,142 +127,177 @@ h1 span{color:var(--accent);display:block;}
 .tfield input::-webkit-inner-spin-button,.tfield input::-webkit-outer-spin-button{-webkit-appearance:none;}
 .tsep{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:300;color:var(--muted);align-self:center;padding-bottom:4px;}
 .tdiv{width:1px;background:var(--border);align-self:stretch;margin:10px 0;}
+
+/* ── GENDER BUTTONS ────────────────────────────────────────────────────────── */
 .gender-row{display:flex;gap:8px;margin-top:14px;max-width:400px;}
 .gbtn{flex:1;padding:9px 0;background:var(--surface);border:1px solid var(--border);border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .15s;}
 .gbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(200,241,53,.06);}
+body.light .gbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(90,138,0,.08);}
+.errmsg{display:none;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--red);margin-top:10px;}
+
+/* ── PER-LEG GENDER ────────────────────────────────────────────────────────── */
+.leg-gender-row{display:none;max-width:560px;margin-top:12px;background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.leg-gender-row.show{display:block;}
+.leg-gender-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+@media(max-width:500px){.leg-gender-grid{grid-template-columns:repeat(2,1fr);}}
+.lgcell{padding:10px 12px;border-right:1px solid var(--border);}
+.lgcell:last-child{border-right:none;}
+.lgcell-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;line-height:1.4;}
+.lgbtns{display:flex;gap:4px;}
+.lgbtn{flex:1;padding:4px 0;background:transparent;border:1px solid var(--border);border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .15s;}
+.lgbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(200,241,53,.06);}
+body.light .lgbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(90,138,0,.08);}
+.leg-gender-note{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.04em;color:var(--muted);padding:7px 12px;border-top:1px solid var(--border);}
+
+/* ── CALCULATE BUTTON ──────────────────────────────────────────────────────── */
 .cbtn{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:13px 30px;background:var(--accent);color:#0d0e10;border:none;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;}
 .cbtn:hover{background:#deff55;transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,241,53,.22);}
 .cbtn:active{transform:none;}
 .cbtn svg{transition:transform .15s;}
 .cbtn:hover svg{transform:translateX(3px);}
-.errmsg{display:none;margin-top:10px;font-size:12px;color:var(--red);font-family:'Share Tech Mono',monospace;}
+body.light .cbtn{background:var(--accent);color:#fff;}
+body.light .cbtn:hover{background:#4a7400;box-shadow:0 6px 20px rgba(90,138,0,.22);}
 
-/* TOGGLE ROWS */
-.wsec{margin-bottom:36px;}
-.trow{display:flex;align-items:center;gap:12px;cursor:pointer;padding:13px 16px;background:var(--surface);border:1px solid var(--border);border-radius:4px;max-width:480px;transition:border-color .15s;user-select:none;}
+/* ── OPTIONAL PANELS ───────────────────────────────────────────────────────── */
+.wsec{margin-bottom:14px;}
+.trow{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:4px;cursor:pointer;user-select:none;transition:border-color .15s;}
 .trow:hover{border-color:var(--muted);}
-.sw{width:36px;height:20px;background:var(--border);border-radius:10px;position:relative;flex-shrink:0;transition:background .2s;}
-.sw::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:var(--muted);top:3px;left:3px;transition:transform .2s,background .2s;}
-.sw.on{background:rgba(200,241,53,.15);border:1px solid var(--accent);}
-.sw.on::after{transform:translateX(16px);background:var(--accent);}
+.sw{width:32px;height:18px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);flex-shrink:0;position:relative;transition:all .2s;}
+.sw::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:all .2s;}
+.sw.on{background:rgba(200,241,53,.15);border-color:var(--accent);}
+.sw.on::after{background:var(--accent);left:16px;}
+body.light .sw.on{background:rgba(90,138,0,.15);border-color:var(--accent);}
+body.light .sw.on::after{background:var(--accent);}
 .ttxt{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);}
-.tbadge{margin-left:auto;font-size:11px;color:var(--muted);font-family:'Barlow',sans-serif;}
+.tbadge{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.opanel{max-height:0;overflow:hidden;transition:max-height .3s cubic-bezier(.22,1,.36,1);}
+.opanel.open{max-height:800px;}
+.opanel-inner{padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 4px 4px;}
+.pnote{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
 
-/* PANELS */
-.opanel{display:none;margin-top:10px;padding:18px 18px 14px;background:var(--surface);border:1px solid var(--border);border-radius:4px;max-width:480px;}
-.opanel.open{display:block;}
-.pnote{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:16px;}
+/* ── NAME INPUTS ───────────────────────────────────────────────────────────── */
+.namerow{display:flex;align-items:center;gap:14px;padding:7px 0;border-bottom:1px solid var(--border);}
+.namerow:last-child{border-bottom:none;}
+.namelbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;width:64px;flex-shrink:0;}
+.nameinput{flex:1;background:transparent;border:none;border-bottom:1px solid var(--border);outline:none;font-family:'Barlow',sans-serif;font-size:13px;color:var(--text);padding:4px 0;transition:border-color .15s;}
+.nameinput:focus{border-color:var(--accent);}
 
-/* WEIGHT ROWS */
-.wrow{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.wrow:last-of-type{margin-bottom:0;}
-.wlbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:50px;flex-shrink:0;}
-.wrow:nth-child(2) .wlbl{color:#c8f135;}.wrow:nth-child(3) .wlbl{color:#38bdf8;}.wrow:nth-child(4) .wlbl{color:#fb923c;}.wrow:nth-child(5) .wlbl{color:#a78bfa;}
-.wslider{flex:1;-webkit-appearance:none;height:4px;background:var(--border);border-radius:2px;outline:none;}
-.wrow:nth-child(2) .wslider{accent-color:#c8f135;}.wrow:nth-child(3) .wslider{accent-color:#38bdf8;}.wrow:nth-child(4) .wslider{accent-color:#fb923c;}.wrow:nth-child(5) .wslider{accent-color:#a78bfa;}
-.wval{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text2);width:38px;text-align:right;flex-shrink:0;}
-.wreset{margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:3px;padding:5px 12px;cursor:pointer;transition:all .15s;}
+/* ── WEIGHT SLIDERS ────────────────────────────────────────────────────────── */
+.wrow{display:grid;grid-template-columns:64px 1fr 44px;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.wrow:last-of-type{border-bottom:none;}
+.wlbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+.wslider{width:100%;accent-color:var(--accent);}
+.wval{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--accent);text-align:right;}
+body.light .wval{color:var(--accent);}
+.wreset{margin-top:10px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:3px;padding:5px 12px;cursor:pointer;transition:all .15s;}
 .wreset:hover{color:var(--text);border-color:var(--muted);}
 
-/* LOCK ROWS */
-.lockrow{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.lockrow:last-of-type{margin-bottom:0;}
-.lockcheck{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:1.5px solid var(--border);border-radius:3px;background:var(--bg);cursor:pointer;flex-shrink:0;position:relative;transition:border-color .15s,background .15s;}
-.lockcheck:checked{background:var(--accent);border-color:var(--accent);}
-.lockcheck:checked::after{content:'';position:absolute;left:4px;top:1px;width:5px;height:9px;border:2px solid #0d0e10;border-left:none;border-top:none;transform:rotate(40deg);}
-.lockrow:nth-child(2) .lockcheck:checked{background:#c8f135;border-color:#c8f135;}.lockrow:nth-child(3) .lockcheck:checked{background:#38bdf8;border-color:#38bdf8;}.lockrow:nth-child(4) .lockcheck:checked{background:#fb923c;border-color:#fb923c;}.lockrow:nth-child(5) .lockcheck:checked{background:#a78bfa;border-color:#a78bfa;}
-.locklbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:50px;flex-shrink:0;color:var(--muted);transition:color .15s;}
-.lockrow:nth-child(2).active .locklbl{color:#c8f135;}.lockrow:nth-child(3).active .locklbl{color:#38bdf8;}.lockrow:nth-child(4).active .locklbl{color:#fb923c;}.lockrow:nth-child(5).active .locklbl{color:#a78bfa;}
-.locktimewrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;opacity:.35;pointer-events:none;transition:opacity .2s,border-color .2s;}
-.lockrow.active .locktimewrap{opacity:1;pointer-events:auto;}
-.lockrow:nth-child(2).active .locktimewrap:focus-within{border-color:#c8f135;}.lockrow:nth-child(3).active .locktimewrap:focus-within{border-color:#38bdf8;}.lockrow:nth-child(4).active .locktimewrap:focus-within{border-color:#fb923c;}.lockrow:nth-child(5).active .locktimewrap:focus-within{border-color:#a78bfa;}
-.ltinput{background:transparent;border:none;outline:none;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--text);text-align:center;-moz-appearance:textfield;padding:6px 4px;}
+/* ── LOCK SPLITS ───────────────────────────────────────────────────────────── */
+.lockrow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);opacity:.35;transition:opacity .15s;}
+.lockrow:last-of-type{border-bottom:none;}
+.lockrow.active{opacity:1;}
+.lockcheck{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
+.locklbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;width:56px;flex-shrink:0;color:var(--muted);}
+.lockrow.active .locklbl{color:var(--accent);}
+body.light .lockrow.active .locklbl{color:var(--accent);}
+.locktimewrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;}
+.ltinput{background:transparent;border:none;outline:none;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--text);text-align:center;-moz-appearance:textfield;padding:4px 2px;}
 .ltinput::-webkit-inner-spin-button,.ltinput::-webkit-outer-spin-button{-webkit-appearance:none;}
-.ltinput.wide{width:44px;}.ltinput.narrow{width:34px;}
-.ltsep{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:300;color:var(--muted);padding-bottom:2px;user-select:none;}
-.ltdiv{width:1px;background:var(--border);align-self:stretch;margin:5px 0;}
-.lock-err{display:none;margin-top:10px;font-size:11px;color:var(--red);font-family:'Share Tech Mono',monospace;}
+.ltinput.wide{width:38px;}
+.ltinput.narrow{width:26px;}
+.ltsep{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:300;color:var(--muted);padding:0 1px;}
+.ltdiv{width:1px;background:var(--border);align-self:stretch;margin:6px 0;}
+.lock-err{display:none;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--red);margin-top:10px;}
 .lock-err.show{display:block;}
 
-/* PR ROWS */
-.prrow{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.prrow:last-of-type{margin-bottom:0;}
-.prlbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:50px;flex-shrink:0;}
-.prrow:nth-child(2) .prlbl{color:#c8f135;}.prrow:nth-child(3) .prlbl{color:#38bdf8;}.prrow:nth-child(4) .prlbl{color:#fb923c;}.prrow:nth-child(5) .prlbl{color:#a78bfa;}
-.prtimewrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;transition:border-color .2s;flex:1;}
-.prrow:nth-child(2) .prtimewrap:focus-within{border-color:#c8f135;}.prrow:nth-child(3) .prtimewrap:focus-within{border-color:#38bdf8;}.prrow:nth-child(4) .prtimewrap:focus-within{border-color:#fb923c;}.prrow:nth-child(5) .prtimewrap:focus-within{border-color:#a78bfa;}
+/* ── PR CHECK ──────────────────────────────────────────────────────────────── */
+.prrow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.prrow:last-of-type{border-bottom:none;}
+.prlbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;width:56px;flex-shrink:0;}
+.prtimewrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;}
 
-/* RUNNER NAMES */
-.namerow{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.namerow:last-of-type{margin-bottom:0;}
-.namelbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:50px;flex-shrink:0;}
-.namerow:nth-child(2) .namelbl{color:#c8f135;}.namerow:nth-child(3) .namelbl{color:#38bdf8;}.namerow:nth-child(4) .namelbl{color:#fb923c;}.namerow:nth-child(5) .namelbl{color:#a78bfa;}
-.nameinput{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;padding:8px 12px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s;}
-.nameinput::placeholder{color:var(--muted);}
-.namerow:nth-child(2) .nameinput:focus{border-color:#c8f135;}.namerow:nth-child(3) .nameinput:focus{border-color:#38bdf8;}.namerow:nth-child(4) .nameinput:focus{border-color:#fb923c;}.namerow:nth-child(5) .nameinput:focus{border-color:#a78bfa;}
-
-/* UNIT TOGGLE */
-.unit-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px;max-width:480px;}
-.unit-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:4px;}
-.ubtn{padding:6px 14px;background:var(--surface);border:1px solid var(--border);border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .15s;}
-.ubtn.active{border-color:var(--accent);color:var(--accent);background:rgba(200,241,53,.06);}
-
-/* BENCHMARKS */
-.bench-add-row{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
-.bench-name-input{background:var(--bg);border:1.5px solid var(--border);border-radius:3px;padding:7px 10px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--text);outline:none;width:160px;transition:border-color .2s;}
-.bench-name-input:focus{border-color:var(--accent);}
-.bench-name-input::placeholder{color:var(--muted);}
-.bench-time-wrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;transition:border-color .2s;}
-.bench-time-wrap:focus-within{border-color:var(--accent);}
-.bench-add-btn{padding:7px 14px;background:var(--accent);color:#0d0e10;border:none;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .15s;white-space:nowrap;}
+/* ── BENCHMARKS ────────────────────────────────────────────────────────────── */
+.bench-add{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.bench-name-inp{flex:1;min-width:120px;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:8px 10px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .15s;}
+.bench-name-inp:focus{border-color:var(--accent);}
+.bench-timewrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;}
+.bench-add-btn{padding:8px 14px;background:var(--accent);color:#0d0e10;border:none;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .15s;}
 .bench-add-btn:hover{background:#deff55;}
-.bench-list{display:flex;flex-direction:column;gap:6px;margin-top:4px;}
-.bench-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:3px;}
-.bench-item-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--text2);flex:1;}
-.bench-item-time{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text);flex-shrink:0;}
-.bench-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:2px 4px;transition:color .1s;flex-shrink:0;}
+body.light .bench-add-btn{background:var(--accent);color:#fff;}
+body.light .bench-add-btn:hover{background:#4a7400;}
+.bench-list{margin-top:4px;}
+.bench-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);}
+.bench-item:last-child{border-bottom:none;}
+.bench-item-name{font-family:'Barlow',sans-serif;font-size:13px;flex:1;color:var(--text);}
+.bench-item-time{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--accent);}
+body.light .bench-item-time{color:var(--accent);}
+.bench-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;padding:0 4px;transition:color .15s;}
 .bench-del:hover{color:var(--red);}
 
-/* BENCHMARK LADDER (in results) */
-.bench-ladder{margin-top:20px;animation:up .38s cubic-bezier(.22,1,.36,1) .35s both;}
-.bench-ladder-inner{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
-.brow{display:flex;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--border);transition:background .1s;}
-.brow:last-child{border-bottom:none;}
-.brow:hover{background:var(--surface2);}
-.brow.target-row{background:rgba(200,241,53,.05);border-left:3px solid var(--accent);}
-.brow.target-row .bname{color:var(--accent);}
-.bname{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;flex:1;letter-spacing:.03em;}
-.btime{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text);flex-shrink:0;width:70px;text-align:right;}
-.bdiff{font-family:'Share Tech Mono',monospace;font-size:11px;flex-shrink:0;width:68px;text-align:right;}
-.bdiff.ahead{color:var(--green);}
-.bdiff.behind{color:var(--red);}
-.bdiff.same{color:var(--accent);}
+/* ── UNIT CONVERSION ───────────────────────────────────────────────────────── */
+.unit-row{display:flex;align-items:center;gap:6px;}
+.unit-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);width:38px;flex-shrink:0;}
+.ubtn{padding:5px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);cursor:pointer;transition:all .15s;}
+.ubtn.active{border-color:var(--accent);color:var(--accent);background:rgba(200,241,53,.06);}
+body.light .ubtn.active{border-color:var(--accent);color:var(--accent);background:rgba(90,138,0,.08);}
 
-/* RESULTS */
+/* ── HISTORY ───────────────────────────────────────────────────────────────── */
+.hist-item{padding:10px 12px;background:var(--surface2);border-radius:3px;cursor:pointer;margin-bottom:6px;border:1px solid var(--border);transition:border-color .15s;position:relative;}
+.hist-item:hover{border-color:var(--muted);}
+.hist-time{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--accent);margin-bottom:2px;}
+body.light .hist-time{color:var(--accent);}
+.hist-splits{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);}
+.hist-gender{font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.hist-del{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;padding:2px 5px;transition:color .15s;}
+.hist-del:hover{color:var(--red);}
+.hist-empty{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);padding:8px 0;}
+.hist-clear{margin-top:10px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:3px;padding:5px 12px;cursor:pointer;transition:all .15s;}
+.hist-clear:hover{color:var(--red);border-color:var(--red);}
+
+/* ── RESULTS ───────────────────────────────────────────────────────────────── */
 .rsec{display:none;}.rsec.on{display:block;}
 .rhero{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
 .rbig{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:var(--accent);letter-spacing:-.02em;line-height:1;}
+body.light .rbig{color:var(--accent);}
 .rlbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .ebadge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(200,241,53,.07);border:1px solid rgba(200,241,53,.18);border-radius:20px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:28px;}
 .edot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+body.light .ebadge{background:rgba(90,138,0,.07);border-color:rgba(90,138,0,.22);color:var(--accent);}
+body.light .edot{background:var(--accent);}
 .res-actions{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;align-items:center;}
 .copy-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:var(--surface);border:1px solid var(--border);border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);cursor:pointer;transition:all .15s;}
 .copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+body.light .copy-btn:hover{border-color:var(--accent);color:var(--accent);}
 .copy-btn.copied{border-color:var(--green);color:var(--green);}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* LEG CARDS */
+/* ── LEG CARDS ─────────────────────────────────────────────────────────────── */
 .lgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
 @media(max-width:500px){.lgrid{grid-template-columns:1fr;}}
 .lcard{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:18px 18px 16px;position:relative;overflow:hidden;animation:up .38s cubic-bezier(.22,1,.36,1) both;}
-.lcard:nth-child(1){animation-delay:.04s;border-top:2px solid #c8f135;}.lcard:nth-child(2){animation-delay:.10s;border-top:2px solid #38bdf8;}.lcard:nth-child(3){animation-delay:.16s;border-top:2px solid #fb923c;}.lcard:nth-child(4){animation-delay:.22s;border-top:2px solid #a78bfa;}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.lcard:nth-child(1){animation-delay:.04s;border-top:2px solid #c8f135;}
+.lcard:nth-child(2){animation-delay:.10s;border-top:2px solid #38bdf8;}
+.lcard:nth-child(3){animation-delay:.16s;border-top:2px solid #fb923c;}
+.lcard:nth-child(4){animation-delay:.22s;border-top:2px solid #a78bfa;}
+body.light .lcard:nth-child(1){border-top-color:#5a8a00;}
+body.light .lcard:nth-child(2){border-top-color:#0080c0;}
+body.light .lcard:nth-child(3){border-top-color:#c06000;}
+body.light .lcard:nth-child(4){border-top-color:#7040c0;}
 .lcard::after{content:'';position:absolute;top:0;left:0;right:0;height:60px;opacity:.035;pointer-events:none;}
-.lcard:nth-child(1)::after{background:#c8f135;}.lcard:nth-child(2)::after{background:#38bdf8;}.lcard:nth-child(3)::after{background:#fb923c;}.lcard:nth-child(4)::after{background:#a78bfa;}
+.lcard:nth-child(1)::after{background:#c8f135;}
+.lcard:nth-child(2)::after{background:#38bdf8;}
+.lcard:nth-child(3)::after{background:#fb923c;}
+.lcard:nth-child(4)::after{background:#a78bfa;}
+body.light .lcard:nth-child(1)::after{background:#5a8a00;opacity:.06;}
+body.light .lcard:nth-child(2)::after{background:#0080c0;opacity:.06;}
+body.light .lcard:nth-child(3)::after{background:#c06000;opacity:.06;}
+body.light .lcard:nth-child(4)::after{background:#7040c0;opacity:.06;}
 .lrunner{font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ltag{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
 .ldist{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;text-transform:uppercase;margin-bottom:10px;}
 .lcard:nth-child(1) .ldist{color:#c8f135;}.lcard:nth-child(2) .ldist{color:#38bdf8;}.lcard:nth-child(3) .ldist{color:#fb923c;}.lcard:nth-child(4) .ldist{color:#a78bfa;}
+body.light .lcard:nth-child(1) .ldist{color:#5a8a00;}body.light .lcard:nth-child(2) .ldist{color:#0080c0;}body.light .lcard:nth-child(3) .ldist{color:#c06000;}body.light .lcard:nth-child(4) .ldist{color:#7040c0;}
 .lsplit{font-family:'Barlow Condensed',sans-serif;font-size:50px;font-weight:900;color:var(--text);letter-spacing:-.02em;line-height:1;margin-bottom:4px;}
 .range-band{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:10px;letter-spacing:.04em;}
 .range-band span{color:var(--text2);}
@@ -268,10 +312,13 @@ h1 span{color:var(--accent);display:block;}
 .ebar-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;display:flex;justify-content:space-between;}
 .ebar-track{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
 .ebar-fill{height:100%;border-radius:2px;transition:width .7s cubic-bezier(.22,1,.36,1);}
-.lcard:nth-child(1) .ebar-fill{background:#c8f135;}.lcard:nth-child(2) .ebar-fill{background:#38bdf8;}.lcard:nth-child(3) .ebar-fill{background:#fb923c;}.lcard:nth-child(4) .ebar-fill{background:#a78bfa;}
+.lcard:nth-child(1) .ebar-fill{background:#c8f135;}body.light .lcard:nth-child(1) .ebar-fill{background:#5a8a00;}
+.lcard:nth-child(2) .ebar-fill{background:#38bdf8;}body.light .lcard:nth-child(2) .ebar-fill{background:#0080c0;}
+.lcard:nth-child(3) .ebar-fill{background:#fb923c;}body.light .lcard:nth-child(3) .ebar-fill{background:#c06000;}
+.lcard:nth-child(4) .ebar-fill{background:#a78bfa;}body.light .lcard:nth-child(4) .ebar-fill{background:#7040c0;}
 .locked-badge{display:inline-flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:10px;margin-bottom:6px;}
 
-/* SUMMARY TABLE */
+/* ── SUMMARY TABLE ─────────────────────────────────────────────────────────── */
 .stbl{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;animation:up .38s cubic-bezier(.22,1,.36,1) .28s both;}
 .sthd{display:grid;grid-template-columns:72px 100px 120px 120px 1fr;padding:9px 18px;background:var(--surface2);border-bottom:1px solid var(--border);}
 .sthd span{font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
@@ -280,11 +327,13 @@ h1 span{color:var(--accent);display:block;}
 .strow:hover{background:var(--surface2);}
 .strow .stn{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
 .strow:nth-child(1) .stn{color:#c8f135;}.strow:nth-child(2) .stn{color:#38bdf8;}.strow:nth-child(3) .stn{color:#fb923c;}.strow:nth-child(4) .stn{color:#a78bfa;}
+body.light .strow:nth-child(1) .stn{color:#5a8a00;}body.light .strow:nth-child(2) .stn{color:#0080c0;}body.light .strow:nth-child(3) .stn{color:#c06000;}body.light .strow:nth-child(4) .stn{color:#7040c0;}
 .strow span{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:500;color:var(--text2);}
 .strow .sts{font-size:16px;font-weight:700;color:var(--text);}
 .strow .stp{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--accent);}
+body.light .strow .stp{color:var(--accent);}
 
-/* CUMULATIVE */
+/* ── CUMULATIVE CLOCK ──────────────────────────────────────────────────────── */
 .cumsec{margin-top:20px;animation:up .38s cubic-bezier(.22,1,.36,1) .33s both;}
 .cumtable{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
 .cumhd{display:grid;grid-template-columns:1fr 1fr 1fr;padding:9px 18px;background:var(--surface2);border-bottom:1px solid var(--border);}
@@ -294,77 +343,72 @@ h1 span{color:var(--accent);display:block;}
 .cumrow .cleg{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);}
 .cumrow .ctime{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--text);}
 .cumrow:last-child .ctime{color:var(--accent);}
+body.light .cumrow:last-child .ctime{color:var(--accent);}
 .cumrow .cdelta{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--muted);}
 
-/* METHOD NOTE */
+/* ── BENCHMARK LADDER ──────────────────────────────────────────────────────── */
+.bench-ladder{margin-top:20px;animation:up .38s cubic-bezier(.22,1,.36,1) .36s both;}
+.bench-ladder-inner{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.brow{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--border);border-left:2px solid transparent;}
+.brow:last-child{border-bottom:none;}
+.brow.target-row{background:rgba(200,241,53,.03);border-left-color:var(--accent);}
+body.light .brow.target-row{background:rgba(90,138,0,.04);border-left-color:var(--accent);}
+.bname{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;flex:1;letter-spacing:.03em;}
+.brow.target-row .bname{color:var(--accent);}
+body.light .brow.target-row .bname{color:var(--accent);}
+.btime{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text);flex-shrink:0;width:70px;text-align:right;}
+.bdiff{font-family:'Share Tech Mono',monospace;font-size:11px;flex-shrink:0;width:68px;text-align:right;}
+.bdiff.ahead{color:var(--green);}.bdiff.behind{color:var(--red);}
+
+/* ── METHOD NOTE ───────────────────────────────────────────────────────────── */
 .mnote{margin-top:18px;padding:14px 18px;background:rgba(200,241,53,.03);border:1px solid rgba(200,241,53,.10);border-radius:4px;font-size:12px;color:var(--muted);line-height:1.65;animation:up .38s cubic-bezier(.22,1,.36,1) .38s both;}
-.mnote strong{color:var(--accent);font-weight:600;}
+.mnote strong{color:var(--text);}
+body.light .mnote{background:rgba(90,138,0,.03);border-color:rgba(90,138,0,.12);}
+body.light .mnote strong{color:var(--accent);}
 
-/* HISTORY */
-.histsec{margin-bottom:36px;}
-.hist-list{margin-top:10px;display:flex;flex-direction:column;gap:6px;max-width:540px;}
-.hist-item{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:4px;cursor:pointer;transition:border-color .15s;}
-.hist-item:hover{border-color:var(--muted);}
-.hist-time{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-.01em;flex-shrink:0;min-width:68px;}
-.hist-splits{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.02em;flex:1;line-height:1.7;}
-.hist-splits span{color:var(--text2);}
-.hist-gender{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
-.hist-del{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:3px;font-size:14px;transition:color .1s;flex-shrink:0;}
-.hist-del:hover{color:var(--red);}
-.hist-empty{font-size:12px;color:var(--muted);font-family:'Share Tech Mono',monospace;padding:14px 0;}
-/* MODE SWITCHER */
-.mode-switch{display:flex;gap:0;margin-bottom:40px;background:var(--surface);border:1px solid var(--border);border-radius:5px;overflow:hidden;max-width:400px;}
-.modeBtn{flex:1;padding:13px 0;background:transparent;border:none;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .2s;position:relative;}
-.modeBtn.active{background:var(--accent);color:#0d0e10;}
-body.light .modeBtn.active{background:var(--accent);color:#fff;}
-.modeBtn:not(.active):hover{color:var(--text);}
-.mode-page{display:none;}.mode-page.active{display:block;}
-
-/* ANALYZE INPUT */
+/* ── ANALYZE MODE ──────────────────────────────────────────────────────────── */
 .az-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:560px;margin-bottom:20px;}
 @media(max-width:500px){.az-grid{grid-template-columns:1fr;}}
 .az-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:16px 18px;}
 .az-card:nth-child(1){border-top:2px solid #c8f135;}.az-card:nth-child(2){border-top:2px solid #38bdf8;}.az-card:nth-child(3){border-top:2px solid #fb923c;}.az-card:nth-child(4){border-top:2px solid #a78bfa;}
+body.light .az-card:nth-child(1){border-top-color:#5a8a00;}body.light .az-card:nth-child(2){border-top-color:#0080c0;}body.light .az-card:nth-child(3){border-top-color:#c06000;}body.light .az-card:nth-child(4){border-top-color:#7040c0;}
 .az-dist{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;margin-bottom:2px;}
 .az-card:nth-child(1) .az-dist{color:#c8f135;}.az-card:nth-child(2) .az-dist{color:#38bdf8;}.az-card:nth-child(3) .az-dist{color:#fb923c;}.az-card:nth-child(4) .az-dist{color:#a78bfa;}
+body.light .az-card:nth-child(1) .az-dist{color:#5a8a00;}body.light .az-card:nth-child(2) .az-dist{color:#0080c0;}body.light .az-card:nth-child(3) .az-dist{color:#c06000;}body.light .az-card:nth-child(4) .az-dist{color:#7040c0;}
 .az-order{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
 .az-nameinput{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);outline:none;font-family:'Barlow',sans-serif;font-size:12px;color:var(--text2);padding:3px 0 5px;margin-bottom:10px;transition:border-color .15s;}
 .az-nameinput::placeholder{color:var(--muted);}
-.az-card:nth-child(1) .az-nameinput:focus{border-color:#c8f135;}.az-card:nth-child(2) .az-nameinput:focus{border-color:#38bdf8;}.az-card:nth-child(3) .az-nameinput:focus{border-color:#fb923c;}.az-card:nth-child(4) .az-nameinput:focus{border-color:#a78bfa;}
 .az-timewrap{display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;transition:border-color .2s;}
 .az-card:nth-child(1) .az-timewrap:focus-within{border-color:#c8f135;}.az-card:nth-child(2) .az-timewrap:focus-within{border-color:#38bdf8;}.az-card:nth-child(3) .az-timewrap:focus-within{border-color:#fb923c;}.az-card:nth-child(4) .az-timewrap:focus-within{border-color:#a78bfa;}
-
-/* ANALYZE GENDER ROW */
+body.light .az-card:nth-child(1) .az-timewrap:focus-within{border-color:#5a8a00;}body.light .az-card:nth-child(2) .az-timewrap:focus-within{border-color:#0080c0;}body.light .az-card:nth-child(3) .az-timewrap:focus-within{border-color:#c06000;}body.light .az-card:nth-child(4) .az-timewrap:focus-within{border-color:#7040c0;}
 .az-gender{display:flex;gap:8px;max-width:560px;margin-bottom:18px;}
-
-/* ANALYZE RESULTS */
 .az-res{display:none;}.az-res.on{display:block;}
-
-/* TEAM SUMMARY HERO */
 .az-hero{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
 @media(max-width:500px){.az-hero{grid-template-columns:1fr 1fr;}}
 .az-stat{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:14px 16px;}
 .az-stat-val{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-.01em;line-height:1;margin-bottom:3px;}
 .az-stat-lbl{font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
-body.light .az-stat-val{color:var(--accent);}
-
-/* EFFORT BAR CHART */
 .az-bars{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:18px 20px;margin-bottom:20px;}
 .az-bar-row{display:grid;grid-template-columns:60px 1fr 52px;align-items:center;gap:12px;margin-bottom:12px;}
 .az-bar-row:last-child{margin-bottom:0;}
 .az-bar-lbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
-.az-bar-track{height:10px;background:var(--border);border-radius:5px;overflow:hidden;position:relative;}
+.az-bar-track{height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
 .az-bar-fill{height:100%;border-radius:5px;transition:width .7s cubic-bezier(.22,1,.36,1);}
-.az-bar-fill.b0{background:#c8f135;}.az-bar-fill.b1{background:#38bdf8;}.az-bar-fill.b2{background:#fb923c;}.az-bar-fill.b3{background:#a78bfa;}
+.az-bar-fill.b0{background:#c8f135;}body.light .az-bar-fill.b0{background:#5a8a00;}
+.az-bar-fill.b1{background:#38bdf8;}body.light .az-bar-fill.b1{background:#0080c0;}
+.az-bar-fill.b2{background:#fb923c;}body.light .az-bar-fill.b2{background:#c06000;}
+.az-bar-fill.b3{background:#a78bfa;}body.light .az-bar-fill.b3{background:#7040c0;}
 .az-bar-pct{font-family:'Share Tech Mono',monospace;font-size:11px;text-align:right;}
-
-/* ANALYSIS CARDS */
 .az-lcards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
 @media(max-width:500px){.az-lcards{grid-template-columns:1fr;}}
 .az-lcard{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:18px 18px 16px;position:relative;overflow:hidden;animation:up .38s cubic-bezier(.22,1,.36,1) both;}
 .az-lcard:nth-child(1){animation-delay:.04s;border-top:2px solid #c8f135;}.az-lcard:nth-child(2){animation-delay:.10s;border-top:2px solid #38bdf8;}.az-lcard:nth-child(3){animation-delay:.16s;border-top:2px solid #fb923c;}.az-lcard:nth-child(4){animation-delay:.22s;border-top:2px solid #a78bfa;}
+body.light .az-lcard:nth-child(1){border-top-color:#5a8a00;}body.light .az-lcard:nth-child(2){border-top-color:#0080c0;}body.light .az-lcard:nth-child(3){border-top-color:#c06000;}body.light .az-lcard:nth-child(4){border-top-color:#7040c0;}
 .az-lcard::after{content:'';position:absolute;top:0;left:0;right:0;height:60px;opacity:.035;pointer-events:none;}
-.az-lcard:nth-child(1)::after{background:#c8f135;}.az-lcard:nth-child(2)::after{background:#38bdf8;}.az-lcard:nth-child(3)::after{background:#fb923c;}.az-lcard:nth-child(4)::after{background:#a78bfa;}
+.az-lcard:nth-child(1)::after{background:#c8f135;}body.light .az-lcard:nth-child(1)::after{background:#5a8a00;opacity:.06;}
+.az-lcard:nth-child(2)::after{background:#38bdf8;}body.light .az-lcard:nth-child(2)::after{background:#0080c0;opacity:.06;}
+.az-lcard:nth-child(3)::after{background:#fb923c;}body.light .az-lcard:nth-child(3)::after{background:#c06000;opacity:.06;}
+.az-lcard:nth-child(4)::after{background:#a78bfa;}body.light .az-lcard:nth-child(4)::after{background:#7040c0;opacity:.06;}
 .az-runnername{font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:3px;}
 .az-rank-badge{display:inline-flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-bottom:8px;}
 .az-rank-1{background:rgba(200,241,53,.15);border:1px solid rgba(200,241,53,.4);color:#c8f135;}
@@ -372,368 +416,607 @@ body.light .az-rank-1{background:rgba(90,138,0,.12);border-color:rgba(90,138,0,.
 .az-rank-last{background:rgba(255,90,90,.1);border:1px solid rgba(255,90,90,.3);color:var(--red);}
 .az-effort-big{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:var(--text);letter-spacing:-.02em;line-height:1;margin-bottom:2px;}
 .az-effort-sub{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;margin-bottom:10px;}
-.az-eq-split{font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text2);margin-bottom:12px;}
-.az-eq-split span{font-weight:700;color:var(--text);}
 .az-diff-pill{display:inline-flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace;font-size:10px;padding:3px 8px;border-radius:10px;margin-bottom:12px;}
 .az-diff-pill.fast{background:rgba(126,232,162,.1);border:1px solid rgba(126,232,162,.25);color:var(--green);}
 .az-diff-pill.slow{background:rgba(255,90,90,.08);border:1px solid rgba(255,90,90,.2);color:var(--red);}
 .az-diff-pill.even{background:rgba(200,241,53,.07);border:1px solid rgba(200,241,53,.2);color:var(--accent);}
-body.light .az-diff-pill.even{color:var(--accent);}
-
-/* PER-LEG GENDER SELECTORS */
-.leg-gender-row{display:none;max-width:560px;margin-top:12px;margin-bottom:0;background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
-.leg-gender-row.show{display:block;}
-.leg-gender-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-@media(max-width:500px){.leg-gender-grid{grid-template-columns:repeat(2,1fr);}}
-.lgcell{padding:10px 12px;border-right:1px solid var(--border);}
-.lgcell:last-child{border-right:none;}
-.lgcell-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.lgbtns{display:flex;gap:4px;}
-.lgbtn{flex:1;padding:4px 0;background:transparent;border:1px solid var(--border);border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .15s;}
-.lgbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(200,241,53,.06);}
-body.light .lgbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(90,138,0,.08);}
-.leg-gender-note{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.06em;color:var(--muted);padding:7px 12px;border-top:1px solid var(--border);}
+body.light .az-diff-pill.even{border-color:rgba(90,138,0,.3);background:rgba(90,138,0,.06);color:var(--accent);}
 .az-balance{margin-top:18px;padding:14px 18px;background:rgba(200,241,53,.03);border:1px solid rgba(200,241,53,.10);border-radius:4px;font-size:12px;color:var(--muted);line-height:1.7;animation:up .38s cubic-bezier(.22,1,.36,1) .35s both;}
 .az-balance strong{color:var(--text);font-weight:600;}
 body.light .az-balance{background:rgba(90,138,0,.03);border-color:rgba(90,138,0,.12);}
+
+/* ── ABOUT PAGE ────────────────────────────────────────────────────────────── */
+.about-section{max-width:680px;margin-bottom:44px;}
+.about-section-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.about-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+body.light .about-section-title{color:var(--accent);}
+.about-body{font-size:14px;color:var(--text2);line-height:1.75;}
+.about-note{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;padding:10px 14px;background:var(--surface2);border-left:2px solid var(--border);border-radius:0 3px 3px 0;}
+.wr-table{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:12px;}
+.wr-hd{display:grid;grid-template-columns:72px 80px 1fr 80px 1fr;padding:9px 18px;background:var(--surface2);border-bottom:1px solid var(--border);}
+.wr-hd span{font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.wr-row{display:grid;grid-template-columns:72px 80px 1fr 80px 1fr;padding:11px 18px;border-bottom:1px solid var(--border);align-items:center;}
+.wr-row:last-child{border-bottom:none;}
+.wr-row:hover{background:var(--surface2);}
+.wr-dist{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);}
+body.light .wr-dist{color:var(--accent);}
+.wr-time{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--text);font-weight:600;}
+.wr-name{font-size:12px;color:var(--muted);}
+@media(max-width:640px){.wr-hd,.wr-row{grid-template-columns:60px 70px 1fr;}.wr-hd span:nth-child(4),.wr-hd span:nth-child(5),.wr-row span:nth-child(4),.wr-row span:nth-child(5){display:none;}}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px;max-width:560px;}
+@media(max-width:500px){.contact-grid{grid-template-columns:1fr;}}
+.contact-card{display:flex;flex-direction:column;gap:5px;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:all .2s;cursor:pointer;}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+body.light .contact-card:hover{border-color:var(--accent);}
+.contact-icon{font-size:18px;margin-bottom:4px;}
+.contact-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.contact-value{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:var(--text);}
 </style>
 </head>
 <body>
+
+<!-- HAMBURGER -->
+<button class="ham" id="ham" onclick="openNav()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- THEME -->
 <button class="theme-btn" id="theme-btn" onclick="togTheme()">
   <span class="theme-icon" id="theme-icon">☀️</span>
   <span id="theme-lbl">Light</span>
 </button>
-<div class="container">
 
-<div class="eyebrow">Track &amp; Field · Split Calculator</div>
-<h1>Distance<span>Medley</span>Relay</h1>
-<p class="header-sub">Plan splits using world record pace ratios, or analyze how evenly your team actually performed.</p>
+<!-- NAV OVERLAY -->
+<div class="nav-overlay" id="nav-overlay" onclick="closeNav()"></div>
 
-<!-- MODE SWITCHER -->
-<div class="mode-switch">
-  <button class="modeBtn active" id="tab-calc" onclick="setMode('calc')">&#9654; Calculate Splits</button>
-  <button class="modeBtn" id="tab-analyze" onclick="setMode('analyze')">&#9650; Analyze Performance</button>
-</div>
-
-<!-- ═══════════════════════════════════════════ CALCULATE MODE ═══════════════ -->
-<div class="mode-page active" id="page-calc">
-<div class="target-sec">
-  <div class="slabel">Target Finish Time</div>
-  <div class="time-row">
-    <div class="tfield"><label>Min</label><input type="number" id="im" min="0" max="99" placeholder="10"></div>
-    <div class="tsep">:</div><div class="tdiv"></div>
-    <div class="tfield"><label>Sec</label><input type="number" id="is" min="0" max="59" placeholder="50"></div>
-    <div class="tsep">.</div><div class="tdiv"></div>
-    <div class="tfield"><label>10th</label><input type="number" id="it" min="0" max="9" placeholder="0"></div>
+<!-- NAV SIDEBAR -->
+<nav class="nav-sidebar" id="nav-sidebar">
+  <div class="nav-logo">
+    <div class="nav-logo-name">Medley Relay<br>Split Calculator</div>
+    <div class="nav-logo-sub">Track &amp; Field · Split &amp; Analysis</div>
   </div>
-  <div class="gender-row">
-    <button class="gbtn active" id="btn-M" onclick="setG('M')">&#9794; Men</button>
-    <button class="gbtn" id="btn-F" onclick="setG('F')">&#9792; Women</button>
-    <button class="gbtn" id="btn-MX" onclick="setG('MX')">Mixed</button>
-  </div>
-  <!-- Per-leg gender selectors (Mixed only) -->
-  <div class="leg-gender-row" id="leg-gender-row">
-    <div class="leg-gender-grid">
-      <div class="lgcell">
-        <div class="lgcell-lbl">1200m</div>
-        <div class="lgbtns">
-          <button class="lgbtn active" id="lg0-M" onclick="setLG(0,'M')">&#9794; M</button>
-          <button class="lgbtn" id="lg0-F" onclick="setLG(0,'F')">&#9792; W</button>
-        </div>
-      </div>
-      <div class="lgcell">
-        <div class="lgcell-lbl">400m</div>
-        <div class="lgbtns">
-          <button class="lgbtn active" id="lg1-M" onclick="setLG(1,'M')">&#9794; M</button>
-          <button class="lgbtn" id="lg1-F" onclick="setLG(1,'F')">&#9792; W</button>
-        </div>
-      </div>
-      <div class="lgcell">
-        <div class="lgcell-lbl">800m</div>
-        <div class="lgbtns">
-          <button class="lgbtn active" id="lg2-M" onclick="setLG(2,'M')">&#9794; M</button>
-          <button class="lgbtn" id="lg2-F" onclick="setLG(2,'F')">&#9792; W</button>
-        </div>
-      </div>
-      <div class="lgcell">
-        <div class="lgcell-lbl">1600m</div>
-        <div class="lgbtns">
-          <button class="lgbtn active" id="lg3-M" onclick="setLG(3,'M')">&#9794; M</button>
-          <button class="lgbtn" id="lg3-F" onclick="setLG(3,'F')">&#9792; W</button>
-        </div>
+  <div class="nav-section">
+    <div class="nav-section-lbl">Navigation</div>
+    <div class="nav-item active" id="nav-home" onclick="goHome()">
+      <div class="nav-dot" style="background:var(--accent)"></div>
+      <div class="nav-item-text">
+        <div class="nav-item-name">Home</div>
+        <div class="nav-item-sub">All events</div>
       </div>
     </div>
-    <div class="leg-gender-note">Set the gender for each runner individually — each leg is compared to the correct world record.</div>
   </div>
-  <div class="errmsg" id="em">&#9888; Enter a valid time first.</div>
-  <button class="cbtn" onclick="calc()">
-    Calculate Splits
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-</div>
-
-<!-- RUNNER NAMES -->
-<div class="wsec">
-  <div class="slabel">Runner Names</div>
-  <div class="trow" onclick="togNames()"><div class="sw" id="swnm"></div><span class="ttxt">Label each leg with a runner's name</span><span class="tbadge">optional</span></div>
-  <div class="opanel" id="nmp">
-    <p class="pnote">Names appear on each leg card and in the copied text — useful for team planning and sharing with coaches.</p>
-    <div class="namerow"><span class="namelbl">1200m</span><input class="nameinput" id="nm0" type="text" placeholder="Runner name…" maxlength="24"></div>
-    <div class="namerow"><span class="namelbl">400m</span><input class="nameinput" id="nm1" type="text" placeholder="Runner name…" maxlength="24"></div>
-    <div class="namerow"><span class="namelbl">800m</span><input class="nameinput" id="nm2" type="text" placeholder="Runner name…" maxlength="24"></div>
-    <div class="namerow"><span class="namelbl">1600m</span><input class="nameinput" id="nm3" type="text" placeholder="Runner name…" maxlength="24"></div>
-  </div>
-</div>
-
-<!-- WEIGHTS -->
-<div class="wsec">
-  <div class="slabel">Runner Weighting</div>
-  <div class="trow" onclick="togW()"><div class="sw" id="sw"></div><span class="ttxt">Apply runner weights</span><span class="tbadge">optional</span></div>
-  <div class="opanel" id="wp">
-    <p class="pnote">Drag right if a runner is faster than average for their event, left if slower. Each tick = 1% adjustment. The other legs absorb the difference so the total still hits your target.</p>
-    <div class="wrow"><span class="wlbl">1200m</span><input type="range" class="wslider" id="w0" min="-20" max="20" step="1" value="0" oninput="wl(0)"><span class="wval" id="wv0">&#177;0%</span></div>
-    <div class="wrow"><span class="wlbl">400m</span><input type="range" class="wslider" id="w1" min="-20" max="20" step="1" value="0" oninput="wl(1)"><span class="wval" id="wv1">&#177;0%</span></div>
-    <div class="wrow"><span class="wlbl">800m</span><input type="range" class="wslider" id="w2" min="-20" max="20" step="1" value="0" oninput="wl(2)"><span class="wval" id="wv2">&#177;0%</span></div>
-    <div class="wrow"><span class="wlbl">1600m</span><input type="range" class="wslider" id="w3" min="-20" max="20" step="1" value="0" oninput="wl(3)"><span class="wval" id="wv3">&#177;0%</span></div>
-    <button class="wreset" onclick="resetW()">&#8634; Reset all to neutral</button>
-  </div>
-</div>
-
-<!-- LOCK SPLITS -->
-<div class="wsec">
-  <div class="slabel">Lock Specific Splits</div>
-  <div class="trow" onclick="togL()"><div class="sw" id="swl"></div><span class="ttxt">Pin a leg to a fixed time</span><span class="tbadge">optional</span></div>
-  <div class="opanel" id="lp">
-    <p class="pnote">Check a leg and enter a known split. That time stays fixed — the remaining legs adjust to still hit your target.</p>
-    <div class="lockrow" id="lr0"><input type="checkbox" class="lockcheck" id="lck0" onchange="togLock(0)"><span class="locklbl">1200m</span><div class="locktimewrap"><input class="ltinput wide" type="number" id="lm0" min="0" max="9" placeholder="3"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ls0" min="0" max="59" placeholder="20"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="lt0" min="0" max="9" placeholder="0"></div></div>
-    <div class="lockrow" id="lr1"><input type="checkbox" class="lockcheck" id="lck1" onchange="togLock(1)"><span class="locklbl">400m</span><div class="locktimewrap"><input class="ltinput wide" type="number" id="lm1" min="0" max="9" placeholder="0"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ls1" min="0" max="59" placeholder="52"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="lt1" min="0" max="9" placeholder="0"></div></div>
-    <div class="lockrow" id="lr2"><input type="checkbox" class="lockcheck" id="lck2" onchange="togLock(2)"><span class="locklbl">800m</span><div class="locktimewrap"><input class="ltinput wide" type="number" id="lm2" min="0" max="9" placeholder="2"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ls2" min="0" max="59" placeholder="01"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="lt2" min="0" max="9" placeholder="0"></div></div>
-    <div class="lockrow" id="lr3"><input type="checkbox" class="lockcheck" id="lck3" onchange="togLock(3)"><span class="locklbl">1600m</span><div class="locktimewrap"><input class="ltinput wide" type="number" id="lm3" min="0" max="9" placeholder="4"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ls3" min="0" max="59" placeholder="30"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="lt3" min="0" max="9" placeholder="0"></div></div>
-    <div class="lock-err" id="lock-err"></div>
-  </div>
-</div>
-
-<!-- PR CHECK -->
-<div class="wsec">
-  <div class="slabel">PR Reality Check</div>
-  <div class="trow" onclick="togPR()"><div class="sw" id="swpr"></div><span class="ttxt">Enter runner PRs</span><span class="tbadge">optional</span></div>
-  <div class="opanel" id="prp">
-    <p class="pnote">Enter each runner's personal record. Each leg card will show what % of their PR they'd need to run, and flag if it's unrealistically close to or faster than their best.</p>
-    <div class="prrow"><span class="prlbl">1200m</span><div class="prtimewrap"><input class="ltinput wide" type="number" id="pm0" min="0" max="9" placeholder="3"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ps0" min="0" max="59" placeholder="00"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="pt0" min="0" max="9" placeholder="0"></div></div>
-    <div class="prrow"><span class="prlbl">400m</span><div class="prtimewrap"><input class="ltinput wide" type="number" id="pm1" min="0" max="9" placeholder="0"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ps1" min="0" max="59" placeholder="48"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="pt1" min="0" max="9" placeholder="0"></div></div>
-    <div class="prrow"><span class="prlbl">800m</span><div class="prtimewrap"><input class="ltinput wide" type="number" id="pm2" min="0" max="9" placeholder="1"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ps2" min="0" max="59" placeholder="55"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="pt2" min="0" max="9" placeholder="0"></div></div>
-    <div class="prrow"><span class="prlbl">1600m</span><div class="prtimewrap"><input class="ltinput wide" type="number" id="pm3" min="0" max="9" placeholder="4"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ps3" min="0" max="59" placeholder="20"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="pt3" min="0" max="9" placeholder="0"></div></div>
-  </div>
-</div>
-
-<!-- BENCHMARKS -->
-<div class="wsec">
-  <div class="slabel">Custom Benchmarks</div>
-  <div class="trow" onclick="togBench()"><div class="sw" id="swbench"></div><span class="ttxt">Add reference times</span><span class="tbadge" id="bench-count"></span></div>
-  <div class="opanel" id="benchp" style="max-width:540px;">
-    <p class="pnote">Add named reference times — school record, conference record, state qualifier, meet record, etc. After calculating, a ladder shows exactly where your target stands among them.</p>
-    <div class="bench-add-row">
-      <input class="bench-name-input" id="bench-name" type="text" placeholder="e.g. School Record" maxlength="28">
-      <div class="bench-time-wrap">
-        <input class="ltinput wide" type="number" id="bm" min="0" max="99" placeholder="10">
-        <span class="ltsep">:</span><div class="ltdiv"></div>
-        <input class="ltinput wide" type="number" id="bs" min="0" max="59" placeholder="30">
-        <span class="ltsep">.</span><div class="ltdiv"></div>
-        <input class="ltinput narrow" type="number" id="bt" min="0" max="9" placeholder="0">
+  <div class="nav-sep"></div>
+  <div class="nav-section">
+    <div class="nav-section-lbl">Info</div>
+    <div class="nav-item" id="nav-about" onclick="goAbout()">
+      <div class="nav-dot" style="background:var(--muted)"></div>
+      <div class="nav-item-text">
+        <div class="nav-item-name">About</div>
+        <div class="nav-item-sub">Method, credits, contact</div>
       </div>
-      <button class="bench-add-btn" onclick="addBenchmark()">+ Add</button>
     </div>
-    <div class="bench-list" id="bench-list"></div>
   </div>
-</div>
-
-<!-- UNIT CONVERSION -->
-<div class="wsec">
-  <div class="slabel">Display Units</div>
-  <div style="max-width:480px;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
-    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-      <div class="unit-row" style="margin-top:0;">
-        <span class="unit-label">Speed</span>
-        <button class="ubtn active" id="u-ms" onclick="setUnit('speed','ms')">m/s</button>
-        <button class="ubtn" id="u-kmh" onclick="setUnit('speed','kmh')">km/h</button>
-        <button class="ubtn" id="u-mph" onclick="setUnit('speed','mph')">mph</button>
+  <div class="nav-sep"></div>
+  <div class="nav-section">
+    <div class="nav-section-lbl">Events</div>
+    <div class="nav-item" id="nav-dmr" onclick="openRace('dmr')">
+      <div class="nav-dot" style="background:#c8f135"></div>
+      <div class="nav-item-text">
+        <div class="nav-item-name">DMR</div>
+        <div class="nav-item-sub">1200 · 400 · 800 · 1600</div>
       </div>
-      <div class="unit-row" style="margin-top:0;">
-        <span class="unit-label">Pace</span>
-        <button class="ubtn active" id="u-p400" onclick="setUnit('pace','p400')">per 400m</button>
-        <button class="ubtn" id="u-pkm" onclick="setUnit('pace','pkm')">per km</button>
-        <button class="ubtn" id="u-pmi" onclick="setUnit('pace','pmi')">per mile</button>
+    </div>
+    <div class="nav-item" id="nav-smr-short" onclick="openRace('smr-short')">
+      <div class="nav-dot" style="background:#38bdf8"></div>
+      <div class="nav-item-text">
+        <div class="nav-item-name">SMR — Short</div>
+        <div class="nav-item-sub">100 · 100 · 200 · 400</div>
+      </div>
+    </div>
+    <div class="nav-item" id="nav-smr-long" onclick="openRace('smr-long')">
+      <div class="nav-dot" style="background:#fb923c"></div>
+      <div class="nav-item-text">
+        <div class="nav-item-name">SMR — Long</div>
+        <div class="nav-item-sub">200 · 200 · 400 · 800</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HOME SCREEN ══════════════════════════════════════ -->
+<div class="screen active" id="screen-home">
+  <div class="home-wrap">
+    <div class="eyebrow">Track &amp; Field · Split Calculator</div>
+    <h1>Medley<span>Relay</span>Calculator</h1>
+    <p class="header-sub">Calculate equal-effort splits and analyze team performance for medley relay events. Built on world record pace ratios for accurate, physiologically grounded results.</p>
+    <div class="race-grid">
+      <!-- DMR -->
+      <div class="race-card r-dmr" onclick="openRace('dmr')">
+        <div class="race-abbr-badge">DMR</div>
+        <div class="race-name">Distance Medley Relay</div>
+        <div class="race-format">1200m · 400m · 800m · 1600m</div>
+        <div class="race-desc">Calculate even-effort splits across four legs ranging from 400m to 1600m, or analyze how evenly your team distributed the workload in a race.</div>
+        <div class="race-open">Open Calculator <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <!-- SMR Short -->
+      <div class="race-card r-smr-short" onclick="openRace('smr-short')">
+        <div class="race-abbr-badge">SMR</div>
+        <div class="race-name">Sprint Medley Relay</div>
+        <div class="race-format">100m · 100m · 200m · 400m</div>
+        <div class="race-desc">Calculate even-effort splits for the short sprint medley format, with legs of 100m, 100m, 200m, and 400m.</div>
+        <div class="race-open">Open Calculator <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <!-- SMR Long -->
+      <div class="race-card r-smr-long" onclick="openRace('smr-long')">
+        <div class="race-abbr-badge">SMR</div>
+        <div class="race-name">Sprint Medley Relay</div>
+        <div class="race-format">200m · 200m · 400m · 800m</div>
+        <div class="race-desc">Calculate even-effort splits for the long sprint medley format, with legs of 200m, 200m, 400m, and 800m.</div>
+        <div class="race-open">Open Calculator <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- HISTORY -->
-<div class="wsec histsec">
-  <div class="slabel">Calculation History</div>
-  <div class="trow" onclick="togHist()"><div class="sw" id="swhist"></div><span class="ttxt">Show recent calculations</span><span class="tbadge" id="hist-count"></span></div>
-  <div class="opanel" id="histp" style="max-width:540px;"><div id="hist-list"></div></div>
-</div>
-
-<!-- RESULTS -->
-<div class="rsec" id="res">
-  <div class="slabel">Results</div>
-  <div class="rhero"><div class="rbig" id="rtotal">--</div><div class="rlbl">DMR Target</div></div>
-  <div class="ebadge"><div class="edot"></div><span id="etxt">--</span></div>
-  <div class="res-actions">
-    <button class="copy-btn" id="copy-btn" onclick="copyResults()">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4 3V2.5A1.5 1.5 0 015.5 1h6A1.5 1.5 0 0113 2.5v6A1.5 1.5 0 0111.5 10H11" stroke="currentColor" stroke-width="1.4"/></svg>
-      Copy Splits
+<!-- ══════════════════════ CALCULATOR SCREEN ═══════════════════════════════ -->
+<div class="screen" id="screen-calc">
+  <div class="calc-wrap">
+    <button class="back-btn" onclick="goHome()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10 7H2M5 4L2 7l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All Events
     </button>
-  </div>
-  <div class="lgrid" id="lgrid"></div>
-  <div class="slabel" style="margin-top:24px">Split Summary</div>
-  <div class="stbl">
-    <div class="sthd" id="sthd"><span>Leg</span><span>Split</span><span id="pace-col-hd">Pace / Lap</span><span id="speed-col-hd">Speed (m/s)</span><span>% of WR</span></div>
-    <div id="stbody"></div>
-  </div>
-  <div class="cumsec">
-    <div class="slabel">Cumulative Exchange Clock</div>
-    <div class="cumtable"><div class="cumhd"><span>After leg</span><span>Clock time</span><span>Split</span></div><div id="cumbody"></div></div>
-  </div>
-  <div class="bench-ladder" id="bench-ladder" style="display:none;">
-    <div class="slabel">Benchmark Comparison</div>
-    <div class="bench-ladder-inner" id="bench-ladder-inner"></div>
-  </div>
-  <div class="mnote" id="mnote"></div>
-</div>
+    <div class="calc-eyebrow" id="calc-eyebrow">Track &amp; Field · Split Calculator</div>
+    <div class="calc-h1" id="calc-h1"><span id="calc-h1-line1">Distance</span><span id="calc-h1-accent">Medley</span><span id="calc-h1-line2">Relay</span></div>
+    <div class="calc-format-tag" id="calc-format-tag"></div>
+    <p class="calc-sub" id="calc-sub"></p>
 
-</div><!-- end #page-calc -->
-
-<!-- ═══════════════════════════════════════════ ANALYZE MODE ════════════════ -->
-<div class="mode-page" id="page-analyze">
-
-  <!-- gender -->
-  <div class="target-sec" style="margin-bottom:28px;">
-    <div class="slabel">Gender Reference</div>
-    <div class="az-gender">
-      <button class="gbtn active" id="abtn-M" onclick="setAG('M')">&#9794; Men</button>
-      <button class="gbtn" id="abtn-F" onclick="setAG('F')">&#9792; Women</button>
-      <button class="gbtn" id="abtn-MX" onclick="setAG('MX')">Mixed</button>
+    <!-- MODE SWITCHER -->
+    <div class="mode-switch">
+      <button class="modeBtn active" id="tab-calc" onclick="setMode('calc')">&#9654; Calculate Splits</button>
+      <button class="modeBtn" id="tab-analyze" onclick="setMode('analyze')">&#9650; Analyze Performance</button>
     </div>
-    <!-- Per-leg gender selectors for analyze (Mixed only) -->
-    <div class="leg-gender-row" id="az-leg-gender-row">
-      <div class="leg-gender-grid">
-        <div class="lgcell"><div class="lgcell-lbl">1200m</div><div class="lgbtns"><button class="lgbtn active" id="alg0-M" onclick="setALG(0,'M')">&#9794; M</button><button class="lgbtn" id="alg0-F" onclick="setALG(0,'F')">&#9792; W</button></div></div>
-        <div class="lgcell"><div class="lgcell-lbl">400m</div><div class="lgbtns"><button class="lgbtn active" id="alg1-M" onclick="setALG(1,'M')">&#9794; M</button><button class="lgbtn" id="alg1-F" onclick="setALG(1,'F')">&#9792; W</button></div></div>
-        <div class="lgcell"><div class="lgcell-lbl">800m</div><div class="lgbtns"><button class="lgbtn active" id="alg2-M" onclick="setALG(2,'M')">&#9794; M</button><button class="lgbtn" id="alg2-F" onclick="setALG(2,'F')">&#9792; W</button></div></div>
-        <div class="lgcell"><div class="lgcell-lbl">1600m</div><div class="lgbtns"><button class="lgbtn active" id="alg3-M" onclick="setALG(3,'M')">&#9794; M</button><button class="lgbtn" id="alg3-F" onclick="setALG(3,'F')">&#9792; W</button></div></div>
+
+    <!-- ── CALCULATE MODE ─────────────────────────────────────────────── -->
+    <div class="mode-page active" id="page-calc">
+
+      <div class="target-sec">
+        <div class="slabel">Target Finish Time</div>
+        <div class="time-row">
+          <div class="tfield"><label>Min</label><input type="number" id="im" min="0" max="99" placeholder="0"></div>
+          <div class="tsep">:</div><div class="tdiv"></div>
+          <div class="tfield"><label>Sec</label><input type="number" id="is" min="0" max="59" placeholder="00"></div>
+          <div class="tsep">.</div><div class="tdiv"></div>
+          <div class="tfield"><label>10th</label><input type="number" id="it" min="0" max="9" placeholder="0"></div>
+        </div>
+        <div class="gender-row">
+          <button class="gbtn active" id="btn-M" onclick="setG('M')">&#9794; Men</button>
+          <button class="gbtn" id="btn-F" onclick="setG('F')">&#9792; Women</button>
+          <button class="gbtn" id="btn-MX" onclick="setG('MX')">Mixed</button>
+        </div>
+        <div class="leg-gender-row" id="leg-gender-row">
+          <div id="leg-gender-inner"></div>
+          <div class="leg-gender-note">Set the gender for each runner individually — each leg is compared to the correct world record.</div>
+        </div>
+        <div class="errmsg" id="em">&#9888; Enter a valid time first.</div>
+        <button class="cbtn" onclick="calc()">
+          Calculate Splits
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
-      <div class="leg-gender-note">Set the gender for each runner individually — each leg is compared to the correct world record.</div>
-    </div>
+
+      <!-- RUNNER NAMES -->
+      <div class="wsec">
+        <div class="slabel">Runner Names</div>
+        <div class="trow" onclick="togNames()"><div class="sw" id="swnm"></div><span class="ttxt">Label each leg with a runner's name</span><span class="tbadge">optional</span></div>
+        <div class="opanel" id="nmp"><div class="opanel-inner"><p class="pnote">Names appear on each leg card and in the copied text.</p><div id="nmp-inner"></div></div></div>
+      </div>
+
+      <!-- WEIGHTS -->
+      <div class="wsec">
+        <div class="slabel">Runner Weighting</div>
+        <div class="trow" onclick="togW()"><div class="sw" id="sw"></div><span class="ttxt">Apply runner weights</span><span class="tbadge">optional</span></div>
+        <div class="opanel" id="wp"><div class="opanel-inner"><p class="pnote">Drag right if a runner is faster than average for their event, left if slower. Each tick = 1% adjustment. The other legs absorb the difference so the total still hits your target.</p><div id="wp-inner"></div><button class="wreset" onclick="resetW()">&#8634; Reset all to neutral</button></div></div>
+      </div>
+
+      <!-- LOCK SPLITS -->
+      <div class="wsec">
+        <div class="slabel">Lock Specific Splits</div>
+        <div class="trow" onclick="togL()"><div class="sw" id="swl"></div><span class="ttxt">Pin a leg to a fixed time</span><span class="tbadge">optional</span></div>
+        <div class="opanel" id="lp"><div class="opanel-inner"><p class="pnote">Check a leg and enter a known split. That time stays fixed — the remaining legs adjust to still hit your target.</p><div id="lp-inner"></div></div></div>
+      </div>
+
+      <!-- PR CHECK -->
+      <div class="wsec">
+        <div class="slabel">PR Reality Check</div>
+        <div class="trow" onclick="togPR()"><div class="sw" id="swpr"></div><span class="ttxt">Enter runner PRs</span><span class="tbadge">optional</span></div>
+        <div class="opanel" id="prp"><div class="opanel-inner"><p class="pnote">Enter each runner's personal record. Each leg card will show what % of their PR they'd need to run.</p><div id="prp-inner"></div></div></div>
+      </div>
+
+      <!-- BENCHMARKS -->
+      <div class="wsec">
+        <div class="slabel">Custom Benchmarks</div>
+        <div class="trow" onclick="togBench()"><div class="sw" id="swbench"></div><span class="ttxt">Add reference times</span><span class="tbadge" id="bench-count"></span></div>
+        <div class="opanel" id="benchp"><div class="opanel-inner" style="max-width:540px;">
+          <p class="pnote">Save named reference times — school record, conference record, etc. After calculating, they appear in a ranked ladder.</p>
+          <div class="bench-add">
+            <input class="bench-name-inp" id="bench-name" type="text" placeholder="Name (e.g. School Record)" maxlength="32">
+            <div class="bench-timewrap">
+              <input class="ltinput wide" type="number" id="bm" min="0" max="99" placeholder="0">
+              <span class="ltsep">:</span><div class="ltdiv"></div>
+              <input class="ltinput wide" type="number" id="bs" min="0" max="59" placeholder="00">
+              <span class="ltsep">.</span><div class="ltdiv"></div>
+              <input class="ltinput narrow" type="number" id="bt" min="0" max="9" placeholder="0">
+            </div>
+            <button class="bench-add-btn" onclick="addBenchmark()">+ Add</button>
+          </div>
+          <div class="bench-list" id="bench-list"></div>
+        </div></div>
+      </div>
+
+      <!-- DISPLAY UNITS -->
+      <div class="wsec">
+        <div class="slabel">Display Units</div>
+        <div style="max-width:480px;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:4px;">
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+            <div class="unit-row"><span class="unit-label">Speed</span><button class="ubtn active" id="u-ms" onclick="setUnit('speed','ms')">m/s</button><button class="ubtn" id="u-kmh" onclick="setUnit('speed','kmh')">km/h</button><button class="ubtn" id="u-mph" onclick="setUnit('speed','mph')">mph</button></div>
+            <div class="unit-row" style="margin-top:8px;"><span class="unit-label">Pace</span><button class="ubtn active" id="u-p400" onclick="setUnit('pace','p400')">per 400m</button><button class="ubtn" id="u-pkm" onclick="setUnit('pace','pkm')">per km</button><button class="ubtn" id="u-pmi" onclick="setUnit('pace','pmi')">per mile</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="wsec">
+        <div class="slabel">Calculation History</div>
+        <div class="trow" onclick="togHist()"><div class="sw" id="swhist"></div><span class="ttxt">Show recent calculations</span><span class="tbadge" id="hist-count"></span></div>
+        <div class="opanel" id="histp" style="max-width:540px;"><div class="opanel-inner"><div id="hist-list"></div></div></div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="rsec" id="res">
+        <div class="slabel">Results</div>
+        <div class="rhero"><div class="rbig" id="rtotal">--</div><div class="rlbl" id="res-race-lbl">DMR Target</div></div>
+        <div class="ebadge"><div class="edot"></div><span id="etxt">--</span></div>
+        <div class="res-actions">
+          <button class="copy-btn" id="copy-btn" onclick="copyResults()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4 3V2.5A1.5 1.5 0 015.5 1h6A1.5 1.5 0 0113 2.5v6A1.5 1.5 0 0111.5 10H11" stroke="currentColor" stroke-width="1.4"/></svg>
+            Copy Splits
+          </button>
+        </div>
+        <div class="lgrid" id="lgrid"></div>
+        <div class="slabel" style="margin-top:24px">Split Summary</div>
+        <div class="stbl">
+          <div class="sthd" id="sthd"><span>Leg</span><span>Split</span><span id="pace-col-hd">Pace / Lap</span><span id="speed-col-hd">Speed (m/s)</span><span>% of WR</span></div>
+          <div id="stbody"></div>
+        </div>
+        <div class="cumsec">
+          <div class="slabel">Cumulative Exchange Clock</div>
+          <div class="cumtable"><div class="cumhd"><span>After leg</span><span>Clock time</span><span>Split</span></div><div id="cumbody"></div></div>
+        </div>
+        <div class="bench-ladder" id="bench-ladder" style="display:none;">
+          <div class="slabel">Benchmark Comparison</div>
+          <div class="bench-ladder-inner" id="bench-ladder-inner"></div>
+        </div>
+        <div class="mnote" id="mnote"></div>
+      </div>
+    </div><!-- end page-calc -->
+
+    <!-- ── ANALYZE MODE ───────────────────────────────────────────────── -->
+    <div class="mode-page" id="page-analyze">
+      <div class="target-sec" style="margin-bottom:28px;">
+        <div class="slabel">Gender Reference</div>
+        <div class="az-gender">
+          <button class="gbtn active" id="abtn-M" onclick="setAG('M')">&#9794; Men</button>
+          <button class="gbtn" id="abtn-F" onclick="setAG('F')">&#9792; Women</button>
+          <button class="gbtn" id="abtn-MX" onclick="setAG('MX')">Mixed</button>
+        </div>
+        <div class="leg-gender-row" id="az-leg-gender-row">
+          <div id="az-leg-gender-inner"></div>
+          <div class="leg-gender-note">Set the gender for each runner individually.</div>
+        </div>
+      </div>
+      <div class="slabel">Actual Splits</div>
+      <div class="az-grid" id="az-grid"></div>
+      <div class="errmsg" id="az-em" style="margin-bottom:12px;">&#9888; Enter all four split times to analyze.</div>
+      <button class="cbtn" onclick="analyze()" style="margin-top:0;margin-bottom:36px;">
+        Analyze Performance
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="az-res" id="az-res">
+        <div class="slabel">Team Summary</div>
+        <div class="az-hero" id="az-hero"></div>
+        <div class="slabel">Effort by Leg</div>
+        <div class="az-bars" id="az-bars"></div>
+        <div class="slabel" style="margin-top:24px">Leg Breakdown</div>
+        <div class="az-lcards" id="az-lcards"></div>
+        <div class="az-balance" id="az-balance"></div>
+      </div>
+    </div><!-- end page-analyze -->
+
   </div>
+</div><!-- end screen-calc -->
 
-  <!-- four input cards -->
-  <div class="slabel">Actual Splits</div>
-  <div class="az-grid">
-    <div class="az-card">
-      <div class="az-dist">1200m</div>
-      <div class="az-order">1st Leg</div>
-      <input class="az-nameinput" id="an0" type="text" placeholder="Runner name (optional)" maxlength="24">
-      <div class="az-timewrap">
-        <input class="ltinput wide" type="number" id="am0" min="0" max="9" placeholder="3">
-        <span class="ltsep">:</span><div class="ltdiv"></div>
-        <input class="ltinput wide" type="number" id="as0" min="0" max="59" placeholder="21">
-        <span class="ltsep">.</span><div class="ltdiv"></div>
-        <input class="ltinput narrow" type="number" id="at0" min="0" max="9" placeholder="0">
+
+<!-- ══════════════════════ ABOUT SCREEN ════════════════════════════════════ -->
+<div class="screen" id="screen-about">
+  <div class="home-wrap">
+    <button class="back-btn" onclick="goHome()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10 7H2M5 4L2 7l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Home
+    </button>
+    <div class="eyebrow">Medley Relay Split Calculator</div>
+    <h1>About<span>This Tool</span></h1>
+    <p class="header-sub">How it works, who made it, and how to get in touch.</p>
+
+    <!-- WHAT IT DOES -->
+    <div class="about-section">
+      <div class="about-section-title">What This Is</div>
+      <p class="about-body">This calculator generates realistic, even-effort splits for medley relay events — the DMR (Distance Medley Relay), short SMR (100-100-200-400), and long SMR (200-200-400-800). Enter a target finish time and it tells you how fast each runner should go. It also includes a performance analyzer: enter your team's actual splits from a race and it shows how evenly the work was distributed and how each leg compared to world record pace.</p>
+    </div>
+
+    <!-- METHODOLOGY -->
+    <div class="about-section">
+      <div class="about-section-title">How the Splits Are Calculated</div>
+      <p class="about-body">Each split is set so that every runner operates at the same percentage of the world record for their specific leg distance. If the team is running at 80% of WR pace, every single runner — regardless of whether they're running 100m or 1600m — is working at 80% of their event's WR. This ensures equal physiological effort across all four legs.</p>
+      <p class="about-body" style="margin-top:12px;">This method was chosen over alternatives like the Riegel formula (which models individual performance over varying distances for a single athlete) because medley relay legs are run by different people. What matters is equal relative effort per runner, not a single athlete's fatigue curve. WR ratios achieve that directly.</p>
+      <p class="about-body" style="margin-top:12px;">The optional runner weighting feature allows adjustments when your lineup isn't perfectly balanced — shifting a split ±20% while automatically redistributing the remainder across the other legs so the total always hits your target.</p>
+    </div>
+
+    <!-- WORLD RECORDS TABLE -->
+    <div class="about-section">
+      <div class="about-section-title">World Record Reference</div>
+      <p class="about-body" style="margin-bottom:16px;">These are the world records the calculator uses. All figures are current as of 2025.</p>
+      <div class="wr-table">
+        <div class="wr-hd">
+          <span>Distance</span><span>Men's WR</span><span>Holder</span><span>Women's WR</span><span>Holder</span>
+        </div>
+        <div class="wr-row">
+          <span class="wr-dist">100m</span>
+          <span class="wr-time">9.58</span><span class="wr-name">Usain Bolt (2009)</span>
+          <span class="wr-time">10.49</span><span class="wr-name">Florence Griffith-Joyner (1988)</span>
+        </div>
+        <div class="wr-row">
+          <span class="wr-dist">200m</span>
+          <span class="wr-time">19.19</span><span class="wr-name">Usain Bolt (2009)</span>
+          <span class="wr-time">21.34</span><span class="wr-name">Florence Griffith-Joyner (1988)</span>
+        </div>
+        <div class="wr-row">
+          <span class="wr-dist">400m</span>
+          <span class="wr-time">43.03</span><span class="wr-name">Wayde van Niekerk (2016)</span>
+          <span class="wr-time">47.60</span><span class="wr-name">Marita Koch (1985)</span>
+        </div>
+        <div class="wr-row">
+          <span class="wr-dist">800m</span>
+          <span class="wr-time">1:40.91</span><span class="wr-name">David Rudisha (2012)</span>
+          <span class="wr-time">1:53.28</span><span class="wr-name">Jarmila Kratochvílová (1983)</span>
+        </div>
+        <div class="wr-row">
+          <span class="wr-dist">1200m</span>
+          <span class="wr-time">2:43.0</span><span class="wr-name">Estimated from WR pace</span>
+          <span class="wr-time">3:01.0</span><span class="wr-name">Estimated from WR pace</span>
+        </div>
+        <div class="wr-row">
+          <span class="wr-dist">1600m</span>
+          <span class="wr-time">3:41.8</span><span class="wr-name">Scaled from mile WR</span>
+          <span class="wr-time">4:06.2</span><span class="wr-name">Scaled from mile WR</span>
+        </div>
+      </div>
+      <p class="about-note">Note: The 1200m and 1600m are not standard standalone events. Their reference times are derived from world record pace at adjacent distances. The 1600m figure is scaled from the mile world record (1 mile = 1609.34m).</p>
+    </div>
+
+    <!-- ABOUT KYLE -->
+    <div class="about-section">
+      <div class="about-section-title">About the Developer</div>
+      <p class="about-body"><strong>Kyle Doherty</strong> is a cross country and track &amp; field runner at El Toro High School in Lake Forest, California.</p>
+      <p class="about-body" style="margin-top:12px;">Never before had I run a DMR, so I decided to look online to find a simple calculator to help accurately pace my team and me. Lo and behold, this is a pretty niche subject, and therefore, the ones I found were blocked by district filters, pay-to-use, or just plain bad. So, I decided to commit several nights of research, calculations, and lost hours of sleep to coming up with the optimal way to calculate DMR splits. And while the solution I constructed certainly isn't the best way to do it, it's pretty dang close. Hey, I even got a couple of national qualifiers and decorated coaches to take a look at and validate the product, so that's pretty cool. Of course, this website will very likely be prone to bugs or errors, so please email me at the email shown below with any notes or recommendations on what you'd like changed. Go Chargers (not football).</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="about-section">
+      <div class="about-section-title">Contact &amp; Feedback</div>
+      <p class="about-body">If you find a bug, have a suggestion, or just want to say something, feel free to reach out.</p>
+      <div class="contact-grid">
+        <a class="contact-card" id="email-card" href="#">
+          <div class="contact-icon">✉</div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value" id="email-display">kyledoherty281&#64;gmail&#46;com</div>
+        </a>
+        <a class="contact-card" href="https://github.com/Doherty-Enterprises/Medley-Relay-Split-Calculator" target="_blank" rel="noopener">
+          <div class="contact-icon">⌥</div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">View source &amp; report issues</div>
+        </a>
       </div>
     </div>
-    <div class="az-card">
-      <div class="az-dist">400m</div>
-      <div class="az-order">2nd Leg</div>
-      <input class="az-nameinput" id="an1" type="text" placeholder="Runner name (optional)" maxlength="24">
-      <div class="az-timewrap">
-        <input class="ltinput wide" type="number" id="am1" min="0" max="9" placeholder="0">
-        <span class="ltsep">:</span><div class="ltdiv"></div>
-        <input class="ltinput wide" type="number" id="as1" min="0" max="59" placeholder="53">
-        <span class="ltsep">.</span><div class="ltdiv"></div>
-        <input class="ltinput narrow" type="number" id="at1" min="0" max="9" placeholder="0">
-      </div>
-    </div>
-    <div class="az-card">
-      <div class="az-dist">800m</div>
-      <div class="az-order">3rd Leg</div>
-      <input class="az-nameinput" id="an2" type="text" placeholder="Runner name (optional)" maxlength="24">
-      <div class="az-timewrap">
-        <input class="ltinput wide" type="number" id="am2" min="0" max="9" placeholder="2">
-        <span class="ltsep">:</span><div class="ltdiv"></div>
-        <input class="ltinput wide" type="number" id="as2" min="0" max="59" placeholder="02">
-        <span class="ltsep">.</span><div class="ltdiv"></div>
-        <input class="ltinput narrow" type="number" id="at2" min="0" max="9" placeholder="0">
-      </div>
-    </div>
-    <div class="az-card">
-      <div class="az-dist">1600m</div>
-      <div class="az-order">4th Leg</div>
-      <input class="az-nameinput" id="an3" type="text" placeholder="Runner name (optional)" maxlength="24">
-      <div class="az-timewrap">
-        <input class="ltinput wide" type="number" id="am3" min="0" max="9" placeholder="4">
-        <span class="ltsep">:</span><div class="ltdiv"></div>
-        <input class="ltinput wide" type="number" id="as3" min="0" max="59" placeholder="34">
-        <span class="ltsep">.</span><div class="ltdiv"></div>
-        <input class="ltinput narrow" type="number" id="at3" min="0" max="9" placeholder="0">
-      </div>
-    </div>
+
   </div>
-
-  <div class="errmsg" id="az-em" style="margin-bottom:12px;">&#9888; Enter at least one valid split time.</div>
-  <button class="cbtn" onclick="analyze()" style="margin-top:0;margin-bottom:36px;">
-    Analyze Performance
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h11M9 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-
-  <!-- ANALYSIS RESULTS -->
-  <div class="az-res" id="az-res">
-
-    <div class="slabel">Team Summary</div>
-    <div class="az-hero" id="az-hero"></div>
-
-    <div class="slabel">Effort by Leg</div>
-    <div class="az-bars" id="az-bars"></div>
-
-    <div class="slabel" style="margin-top:24px">Leg Breakdown</div>
-    <div class="az-lcards" id="az-lcards"></div>
-
-    <div class="az-balance" id="az-balance"></div>
-
+    <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);margin-top:48px;">Last updated March 9, 2026</p>
   </div>
-</div><!-- end #page-analyze -->
-
-</div><!-- end .container -->
+</div><!-- end screen-about -->
 <script>
-// ── World Records ─────────────────────────────────────────────────────────────
-const WR={M:{400:43.03,800:100.91,1200:163.0,1600:221.8},F:{400:47.60,800:113.28,1200:181.0,1600:246.2}};
-WR.MX={400:0,800:0,1200:0,1600:0};
-[400,800,1200,1600].forEach(d=>WR.MX[d]=(WR.M[d]+WR.F[d])/2);
+// ── WORLD RECORDS ─────────────────────────────────────────────────────────────
+const WR={
+  M:{100:9.58,200:19.19,400:43.03,800:100.91,1200:163.0,1600:221.8},
+  F:{100:10.49,200:21.34,400:47.60,800:113.28,1200:181.0,1600:246.2}
+};
+WR.MX={};
+[100,200,400,800,1200,1600].forEach(d=>WR.MX[d]=(WR.M[d]+WR.F[d])/2);
 
-const LEGS=[{order:'1st Leg',dist:1200,name:'1200m'},{order:'2nd Leg',dist:400,name:'400m'},{order:'3rd Leg',dist:800,name:'800m'},{order:'4th Leg',dist:1600,name:'1600m'}];
+// ── RACE CONFIGS ──────────────────────────────────────────────────────────────
+const RACE_CONFIGS={
+  'dmr':{
+    id:'dmr',abbr:'DMR',name:'Distance Medley Relay',
+    line1:'Distance',accent:'Medley',line2:'Relay',
+    format:'1200m · 400m · 800m · 1600m',
+    sub:'Splits calculated using world record pace ratios — every runner works at the same percentage of their event\'s world record for equal physiological effort.',
+    legs:[{dist:1200,name:'1200m',order:'1st Leg'},{dist:400,name:'400m',order:'2nd Leg'},{dist:800,name:'800m',order:'3rd Leg'},{dist:1600,name:'1600m',order:'4th Leg'}]
+  },
+  'smr-short':{
+    id:'smr-short',abbr:'SMR',name:'Sprint Medley Relay (Short)',
+    line1:'Sprint',accent:'Medley',line2:'Relay',
+    format:'100m · 100m · 200m · 400m',
+    sub:'All four legs operate in the anaerobic range. Splits use world record pace ratios — equal physiological effort across each sprint distance.',
+    legs:[{dist:100,name:'100m',order:'1st Leg'},{dist:100,name:'100m',order:'2nd Leg'},{dist:200,name:'200m',order:'3rd Leg'},{dist:400,name:'400m',order:'4th Leg'}]
+  },
+  'smr-long':{
+    id:'smr-long',abbr:'SMR',name:'Sprint Medley Relay (Long)',
+    line1:'Sprint',accent:'Medley',line2:'Relay',
+    format:'200m · 200m · 400m · 800m',
+    sub:'Bridges speed and endurance. Splits use world record pace ratios — equal physiological effort across each leg\'s specific distance.',
+    legs:[{dist:200,name:'200m',order:'1st Leg'},{dist:200,name:'200m',order:'2nd Leg'},{dist:400,name:'400m',order:'3rd Leg'},{dist:800,name:'800m',order:'4th Leg'}]
+  }
+};
+
 const COLORS=['#c8f135','#38bdf8','#fb923c','#a78bfa'];
 const COLORS_LIGHT=['#5a8a00','#0080c0','#c06000','#7040c0'];
 function getColor(i){return document.body.classList.contains('light')?COLORS_LIGHT[i]:COLORS[i];}
 
-let gender='M', wOn=false, lOn=false, prOn=false, histOn=false, namesOn=false, benchOn=false;
-let unitSpeed='ms', unitPace='p400';
-let legGenders=['M','M','M','M'];       // per-leg gender for calc mode (Mixed)
-let azLegGenders=['M','M','M','M'];     // per-leg gender for analyze mode (Mixed)
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentRace=RACE_CONFIGS['dmr'];
+let LEGS=currentRace.legs;
+let gender='M',analyzeGender='M';
+let legGenders=['M','M','M','M'],azLegGenders=['M','M','M','M'];
+let wOn=false,lOn=false,prOn=false,histOn=false,namesOn=false,benchOn=false;
+let unitSpeed='ms',unitPace='p400';
+let _lastSplits=[],_lastLegWRs=[];
 
-// ── Toggles ───────────────────────────────────────────────────────────────────
-function setG(g){
-  gender=g;
-  ['M','F','MX'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('active',x===g));
-  document.getElementById('leg-gender-row').classList.toggle('show',g==='MX');
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function openNav(){document.getElementById('nav-overlay').classList.add('on');document.getElementById('nav-sidebar').classList.add('on');}
+function closeNav(){document.getElementById('nav-overlay').classList.remove('on');document.getElementById('nav-sidebar').classList.remove('on');}
+
+function setNavActive(id){
+  ['nav-home','nav-dmr','nav-smr-short','nav-smr-long','nav-about'].forEach(x=>document.getElementById(x).classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
-// ── Mode switcher & analyze gender ───────────────────────────────────────────
-let analyzeGender='M';
+
+// ── SCREENS ───────────────────────────────────────────────────────────────────
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  closeNav();
+  window.scrollTo(0,0);
+}
+
+function goHome(){showScreen('screen-home');setNavActive('nav-home');}
+function goAbout(){showScreen('screen-about');setNavActive('nav-about');}
+
+function openRace(raceId){
+  currentRace=RACE_CONFIGS[raceId];
+  LEGS=currentRace.legs;
+  legGenders=['M','M','M','M'];
+  azLegGenders=['M','M','M','M'];
+
+  // Update header
+  document.getElementById('calc-h1-line1').textContent=currentRace.line1;
+  document.getElementById('calc-h1-accent').textContent=currentRace.accent;
+  document.getElementById('calc-h1-line2').textContent=currentRace.line2;
+  document.getElementById('calc-format-tag').textContent=currentRace.format;
+  document.getElementById('calc-sub').textContent=currentRace.sub;
+  document.getElementById('res-race-lbl').textContent=currentRace.abbr+' Target';
+
+  // Update title placeholder
+  const firstLeg=currentRace.legs[0];
+  document.getElementById('im').placeholder= firstLeg.dist<=200?'0':'1';
+
+  // Build dynamic inputs
+  buildLegInputs();
+
+  // Clear target time inputs
+  document.getElementById('im').value='';
+  document.getElementById('is').value='';
+  document.getElementById('it').value='';
+
+  // Reset panels
+  setG('M');setAG('M');
+  resetPanels();
+
+  // Reset to Calculate tab
+  setMode('calc');
+
+  // Clear results
+  document.getElementById('res').classList.remove('on');
+  document.getElementById('az-res').classList.remove('on');
+  document.getElementById('em').style.display='none';
+  document.getElementById('az-em').style.display='none';
+
+  // Update history/bench counts
+  updateHistCount();updateBenchCount();renderBenchList();
+
+  setNavActive('nav-'+raceId);
+  showScreen('screen-calc');
+}
+
+function resetPanels(){
+  [['swnm','nmp'],['sw','wp'],['swl','lp'],['swpr','prp'],['swbench','benchp'],['swhist','histp']].forEach(([swId,pId])=>{
+    document.getElementById(swId).classList.remove('on');
+    document.getElementById(pId).classList.remove('open');
+  });
+  wOn=false;lOn=false;prOn=false;histOn=false;namesOn=false;benchOn=false;
+  // Reset weight displays
+  for(let i=0;i<4;i++){
+    const w=document.getElementById('w'+i);if(w)w.value=0;
+    const wv=document.getElementById('wv'+i);if(wv)wv.textContent='±0%';
+  }
+}
+
+// ── BUILD DYNAMIC INPUTS ──────────────────────────────────────────────────────
+function buildLegInputs(){
+  const legs=LEGS;
+
+  // Names
+  document.getElementById('nmp-inner').innerHTML=legs.map((l,i)=>
+    `<div class="namerow"><span class="namelbl" style="color:${COLORS[i]}">${l.name}</span><input class="nameinput" id="nm${i}" type="text" placeholder="Runner name…" maxlength="24"></div>`
+  ).join('');
+
+  // Weights
+  document.getElementById('wp-inner').innerHTML=legs.map((l,i)=>
+    `<div class="wrow"><span class="wlbl" style="color:${COLORS[i]}">${l.name}</span><input type="range" class="wslider" id="w${i}" min="-20" max="20" step="1" value="0" style="accent-color:${COLORS[i]}" oninput="wl(${i})"><span class="wval" id="wv${i}">&#177;0%</span></div>`
+  ).join('');
+
+  // Locks
+  document.getElementById('lp-inner').innerHTML=legs.map((l,i)=>
+    `<div class="lockrow" id="lr${i}"><input type="checkbox" class="lockcheck" id="lck${i}" onchange="togLock(${i})"><span class="locklbl">${l.name}</span><div class="locktimewrap"><input class="ltinput wide" type="number" id="lm${i}" min="0" max="9" placeholder="0"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ls${i}" min="0" max="59" placeholder="00"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="lt${i}" min="0" max="9" placeholder="0"></div></div>`
+  ).join('')+'<div class="lock-err" id="lock-err"></div>';
+
+  // PRs
+  document.getElementById('prp-inner').innerHTML=legs.map((l,i)=>
+    `<div class="prrow"><span class="prlbl" style="color:${COLORS[i]}">${l.name}</span><div class="prtimewrap"><input class="ltinput wide" type="number" id="pm${i}" min="0" max="9" placeholder="0"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="ps${i}" min="0" max="59" placeholder="00"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="pt${i}" min="0" max="9" placeholder="0"></div></div>`
+  ).join('');
+
+  // Per-leg gender (calc)
+  document.getElementById('leg-gender-inner').innerHTML='<div class="leg-gender-grid">'+
+    legs.map((l,i)=>`<div class="lgcell"><div class="lgcell-lbl">${l.order}<br>${l.name}</div><div class="lgbtns"><button class="lgbtn active" id="lg${i}-M" onclick="setLG(${i},'M')">&#9794; M</button><button class="lgbtn" id="lg${i}-F" onclick="setLG(${i},'F')">&#9792; W</button></div></div>`).join('')+'</div>';
+
+  // Per-leg gender (analyze)
+  document.getElementById('az-leg-gender-inner').innerHTML='<div class="leg-gender-grid">'+
+    legs.map((l,i)=>`<div class="lgcell"><div class="lgcell-lbl">${l.order}<br>${l.name}</div><div class="lgbtns"><button class="lgbtn active" id="alg${i}-M" onclick="setALG(${i},'M')">&#9794; M</button><button class="lgbtn" id="alg${i}-F" onclick="setALG(${i},'F')">&#9792; W</button></div></div>`).join('')+'</div>';
+
+  // Analyze split inputs
+  document.getElementById('az-grid').innerHTML=legs.map((l,i)=>
+    `<div class="az-card"><div class="az-dist">${l.name}</div><div class="az-order">${l.order}</div><input class="az-nameinput" id="an${i}" type="text" placeholder="Runner name (optional)" maxlength="24"><div class="az-timewrap"><input class="ltinput wide" type="number" id="am${i}" min="0" max="9" placeholder="0"><span class="ltsep">:</span><div class="ltdiv"></div><input class="ltinput wide" type="number" id="as${i}" min="0" max="59" placeholder="00"><span class="ltsep">.</span><div class="ltdiv"></div><input class="ltinput narrow" type="number" id="at${i}" min="0" max="9" placeholder="0"></div></div>`
+  ).join('');
+
+  // Clamp listeners
+  [0,1,2,3].forEach(i=>{
+    ['ls','lt','ps','pt','as','at'].forEach(pfx=>{
+      const el=document.getElementById(pfx+i);
+      if(!el)return;
+      const max=(pfx.endsWith('s'))?59:9;
+      el.addEventListener('input',function(){if(parseInt(this.value)>max)this.value=max;});
+    });
+  });
+}
+
+// ── GENDER & MODE ─────────────────────────────────────────────────────────────
 function setMode(m){
   ['calc','analyze'].forEach(x=>{
     document.getElementById('tab-'+x).classList.toggle('active',x===m);
     document.getElementById('page-'+x).classList.toggle('active',x===m);
   });
+}
+function setG(g){
+  gender=g;
+  ['M','F','MX'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('active',x===g));
+  document.getElementById('leg-gender-row').classList.toggle('show',g==='MX');
 }
 function setAG(g){
   analyzeGender=g;
@@ -748,21 +1031,22 @@ function setALG(i,g){
   azLegGenders[i]=g;
   ['M','F'].forEach(x=>document.getElementById('alg'+i+'-'+x).classList.toggle('active',x===g));
 }
-function getWRForLeg(i){
-  // Returns the WR reference time for leg i, respecting per-leg gender in Mixed mode
-  if(gender==='MX') return WR[legGenders[i]][LEGS[i].dist];
-  return WR[gender][LEGS[i].dist];
+function getWRForLeg(i){return gender==='MX'?WR[legGenders[i]][LEGS[i].dist]:WR[gender][LEGS[i].dist];}
+function getAWRForLeg(i){return analyzeGender==='MX'?WR[azLegGenders[i]][LEGS[i].dist]:WR[analyzeGender][LEGS[i].dist];}
+
+// ── TOGGLES ───────────────────────────────────────────────────────────────────
+function togPanel(flag,swId,pId){
+  const on=!flag;
+  document.getElementById(swId).classList.toggle('on',on);
+  document.getElementById(pId).classList.toggle('open',on);
+  return on;
 }
-function getAWRForLeg(i){
-  if(analyzeGender==='MX') return WR[azLegGenders[i]][LEGS[i].dist];
-  return WR[analyzeGender][LEGS[i].dist];
-}
-function togW(){wOn=!wOn;document.getElementById('sw').classList.toggle('on',wOn);document.getElementById('wp').classList.toggle('open',wOn);}
-function togL(){lOn=!lOn;document.getElementById('swl').classList.toggle('on',lOn);document.getElementById('lp').classList.toggle('open',lOn);}
-function togPR(){prOn=!prOn;document.getElementById('swpr').classList.toggle('on',prOn);document.getElementById('prp').classList.toggle('open',prOn);}
-function togNames(){namesOn=!namesOn;document.getElementById('swnm').classList.toggle('on',namesOn);document.getElementById('nmp').classList.toggle('open',namesOn);}
-function togBench(){benchOn=!benchOn;document.getElementById('swbench').classList.toggle('on',benchOn);document.getElementById('benchp').classList.toggle('open',benchOn);if(benchOn)renderBenchList();}
-function togHist(){histOn=!histOn;document.getElementById('swhist').classList.toggle('on',histOn);document.getElementById('histp').classList.toggle('open',histOn);if(histOn)renderHistory();}
+function togNames(){namesOn=togPanel(namesOn,'swnm','nmp');}
+function togW(){wOn=togPanel(wOn,'sw','wp');}
+function togL(){lOn=togPanel(lOn,'swl','lp');}
+function togPR(){prOn=togPanel(prOn,'swpr','prp');}
+function togBench(){benchOn=togPanel(benchOn,'swbench','benchp');if(benchOn)renderBenchList();}
+function togHist(){histOn=togPanel(histOn,'swhist','histp');if(histOn)renderHistory();}
 function wl(i){const v=parseInt(document.getElementById('w'+i).value);const sign=v>0?'+':v<0?'−':'±';document.getElementById('wv'+i).textContent=sign+Math.abs(v)+'%';}
 function resetW(){for(let i=0;i<4;i++){document.getElementById('w'+i).value=0;document.getElementById('wv'+i).textContent='±0%';}}
 function togLock(i){document.getElementById('lr'+i).classList.toggle('active',document.getElementById('lck'+i).checked);}
@@ -771,107 +1055,80 @@ function isLocked(i){return lOn&&document.getElementById('lck'+i).checked;}
 function getPRSecs(i){const m=parseInt(document.getElementById('pm'+i).value)||0;const s=parseInt(document.getElementById('ps'+i).value)||0;const t=parseInt(document.getElementById('pt'+i).value)||0;const v=m*60+s+t/10;return v>0?v:null;}
 function getRunnerName(i){return namesOn?document.getElementById('nm'+i).value.trim():'';}
 
-// ── Unit system ───────────────────────────────────────────────────────────────
+// ── UNITS ─────────────────────────────────────────────────────────────────────
 function setUnit(type,val){
   if(type==='speed'){
     unitSpeed=val;
     ['ms','kmh','mph'].forEach(u=>document.getElementById('u-'+u).classList.toggle('active',u===val));
     document.getElementById('speed-col-hd').textContent=val==='ms'?'Speed (m/s)':val==='kmh'?'Speed (km/h)':'Speed (mph)';
-  } else {
+  }else{
     unitPace=val;
     ['p400','pkm','pmi'].forEach(u=>document.getElementById('u-'+u).classList.toggle('active',u===val));
     document.getElementById('pace-col-hd').textContent=val==='p400'?'Pace / Lap':val==='pkm'?'Pace / km':'Pace / mile';
   }
-  // Re-render table if results are showing
-  if(document.getElementById('res').classList.contains('on')){
-    const rows=document.querySelectorAll('#stbody .strow');
-    if(rows.length) rerenderUnits();
+  if(document.getElementById('res').classList.contains('on')&&_lastSplits.length){
+    renderTable(_lastSplits,_lastLegWRs);
+    renderCards(_lastSplits,_lastLegWRs,LEGS.map((_,i)=>wOn?parseInt(document.getElementById('w'+i).value)/100:0),LEGS.map((_,i)=>isLocked(i)));
   }
 }
+function fmtSpeed(mps){if(unitSpeed==='kmh')return (mps*3.6).toFixed(2)+' km/h';if(unitSpeed==='mph')return (mps*2.23694).toFixed(2)+' mph';return mps.toFixed(2)+' m/s';}
+function fmtPace(sp,dist){if(unitPace==='pkm')return fmt((sp/dist)*1000)+'/km';if(unitPace==='pmi')return fmt((sp/dist)*1609.34)+'/mi';return fmt((sp/dist)*400)+'/lap';}
 
-function fmtSpeed(mps){
-  if(unitSpeed==='kmh') return (mps*3.6).toFixed(2)+' km/h';
-  if(unitSpeed==='mph') return (mps*2.23694).toFixed(2)+' mph';
-  return mps.toFixed(2)+' m/s';
-}
-
-function fmtPace(sp,dist){
-  // sp = split in seconds, dist = meters
-  if(unitPace==='pkm') return fmt((sp/dist)*1000)+'/km';
-  if(unitPace==='pmi') return fmt((sp/dist)*1609.34)+'/mi';
-  return fmt((sp/dist)*400)+'/lap';
-}
-
-// ── Benchmarks ────────────────────────────────────────────────────────────────
-function loadBenches(){try{return JSON.parse(localStorage.getItem('dmr_benches')||'[]');}catch(e){return[];}}
-function saveBenches(b){localStorage.setItem('dmr_benches',JSON.stringify(b));updateBenchCount();}
+// ── STORAGE HELPERS ───────────────────────────────────────────────────────────
+function sk(suffix){return currentRace.id+'_'+suffix;}
+function loadBenches(){try{return JSON.parse(localStorage.getItem(sk('benches'))||'[]');}catch(e){return[];}}
+function saveBenches(b){localStorage.setItem(sk('benches'),JSON.stringify(b));updateBenchCount();}
 function updateBenchCount(){const n=loadBenches().length;const el=document.getElementById('bench-count');el.textContent=n>0?n+' saved':'';}
+function loadHistory(){try{return JSON.parse(localStorage.getItem(sk('history'))||'[]');}catch(e){return[];}}
+function saveHistory(entry){const h=loadHistory();h.unshift(entry);if(h.length>8)h.length=8;localStorage.setItem(sk('history'),JSON.stringify(h));updateHistCount();}
+function updateHistCount(){const n=loadHistory().length;const el=document.getElementById('hist-count');el.textContent=n>0?n+' saved':'';}
 
+// ── BENCHMARKS ────────────────────────────────────────────────────────────────
 function addBenchmark(){
   const name=document.getElementById('bench-name').value.trim();
   const m=parseInt(document.getElementById('bm').value)||0;
   const s=parseInt(document.getElementById('bs').value)||0;
   const t=parseInt(document.getElementById('bt').value)||0;
   const secs=m*60+s+t/10;
-  if(!name||secs<=0) return;
+  if(!name||secs<=0)return;
   const b=loadBenches();
   b.push({name,secs,display:fmt(secs)});
   b.sort((a,b2)=>a.secs-b2.secs);
   saveBenches(b);
   document.getElementById('bench-name').value='';
-  document.getElementById('bm').value='';
-  document.getElementById('bs').value='';
-  document.getElementById('bt').value='';
+  document.getElementById('bm').value='';document.getElementById('bs').value='';document.getElementById('bt').value='';
   renderBenchList();
 }
-
 function delBenchmark(idx){const b=loadBenches();b.splice(idx,1);saveBenches(b);renderBenchList();}
-
 function renderBenchList(){
-  const b=loadBenches();
-  const el=document.getElementById('bench-list');
-  el.innerHTML='';
-  if(b.length===0){el.innerHTML='<div style="font-size:12px;color:var(--muted);font-family:Share Tech Mono,monospace;padding:8px 0;">No benchmarks added yet.</div>';return;}
+  const b=loadBenches();const el=document.getElementById('bench-list');el.innerHTML='';
+  if(b.length===0){el.innerHTML='<div style="font-size:12px;color:var(--muted);font-family:\'Share Tech Mono\',monospace;padding:8px 0;">No benchmarks added yet.</div>';return;}
   b.forEach((bm,i)=>{
-    const d=document.createElement('div');
-    d.className='bench-item';
+    const d=document.createElement('div');d.className='bench-item';
     d.innerHTML=`<span class="bench-item-name">${bm.name}</span><span class="bench-item-time">${bm.display}</span><button class="bench-del" onclick="delBenchmark(${i})" title="Remove">&#x2715;</button>`;
     el.appendChild(d);
   });
 }
-
 function renderBenchLadder(totalSecs){
   const ladder=document.getElementById('bench-ladder');
   const inner=document.getElementById('bench-ladder-inner');
   const benches=loadBenches();
   if(!benchOn||benches.length===0){ladder.style.display='none';return;}
   ladder.style.display='block';
-  // Merge target + benchmarks, sort fastest→slowest
   const all=[{name:'► Your Target',secs:totalSecs,isTarget:true},...benches.map(b=>({...b,isTarget:false}))];
   all.sort((a,b)=>a.secs-b.secs);
   inner.innerHTML='';
   all.forEach(item=>{
     const diff=item.secs-totalSecs;
-    let diffStr='',diffCls='same';
-    if(!item.isTarget){
-      if(diff<0){diffStr='-'+fmt(Math.abs(diff));diffCls='ahead';}
-      else if(diff>0){diffStr='+'+fmt(diff);diffCls='behind';}
-      else{diffStr='tied';}
-    }
-    const r=document.createElement('div');
-    r.className='brow'+(item.isTarget?' target-row':'');
+    let diffStr='',diffCls='';
+    if(!item.isTarget){if(diff<0){diffStr='-'+fmt(Math.abs(diff));diffCls='ahead';}else if(diff>0){diffStr='+'+fmt(diff);diffCls='behind';}else{diffStr='tied';}}
+    const r=document.createElement('div');r.className='brow'+(item.isTarget?' target-row':'');
     r.innerHTML=`<span class="bname">${item.name}</span><span class="btime">${fmt(item.secs)}</span><span class="bdiff ${diffCls}">${diffStr}</span>`;
     inner.appendChild(r);
   });
 }
 
-// ── Format helpers ────────────────────────────────────────────────────────────
-function fmt(s){s=Math.max(0,s);const m=Math.floor(s/60);const rem=s-m*60;const si=Math.floor(rem);const t=Math.round((rem-si)*10);if(t===10)return fmt(s+0.05);return m+':'+(String(si).padStart(2,'0'))+'.'+t;}
-
-// ── History ───────────────────────────────────────────────────────────────────
-function loadHistory(){try{return JSON.parse(localStorage.getItem('dmr_history')||'[]');}catch(e){return[];}}
-function saveHistory(entry){const h=loadHistory();h.unshift(entry);if(h.length>8)h.length=8;localStorage.setItem('dmr_history',JSON.stringify(h));updateHistCount();}
-function updateHistCount(){const n=loadHistory().length;const el=document.getElementById('hist-count');el.textContent=n>0?n+' saved':'';}
+// ── HISTORY ───────────────────────────────────────────────────────────────────
 function renderHistory(){
   const h=loadHistory();const el=document.getElementById('hist-list');
   if(h.length===0){el.innerHTML='<div class="hist-empty">No calculations saved yet.</div>';return;}
@@ -879,7 +1136,7 @@ function renderHistory(){
   h.forEach((e,idx)=>{
     const d=document.createElement('div');d.className='hist-item';
     const splitLines=e.legs.map((l,i)=>{
-      const name=e.names&&e.names[i]?`<span style="color:${getColor(i)}">${e.names[i]}</span> `:` <span style="color:${getColor(i)}">${LEGS[i].name}</span> `;
+      const name=e.names&&e.names[i]?`<span style="color:${getColor(i)}">${e.names[i]}</span> `:`<span style="color:${getColor(i)}">${LEGS[i].name}</span> `;
       return name+l;
     }).join(' &nbsp;·&nbsp; ');
     d.innerHTML=`<div class="hist-time">${e.total}</div><div class="hist-splits">${splitLines}</div><div class="hist-gender">${e.gender}</div><button class="hist-del" title="Remove" onclick="delHistory(${idx},event)">&#x2715;</button>`;
@@ -887,10 +1144,10 @@ function renderHistory(){
     el.appendChild(d);
   });
   const clrBtn=document.createElement('button');clrBtn.className='hist-clear';clrBtn.textContent='Clear All History';
-  clrBtn.onclick=()=>{localStorage.removeItem('dmr_history');updateHistCount();renderHistory();};
+  clrBtn.onclick=()=>{localStorage.removeItem(sk('history'));updateHistCount();renderHistory();};
   el.appendChild(clrBtn);
 }
-function delHistory(idx,ev){ev.stopPropagation();const h=loadHistory();h.splice(idx,1);localStorage.setItem('dmr_history',JSON.stringify(h));updateHistCount();renderHistory();}
+function delHistory(idx,ev){ev.stopPropagation();const h=loadHistory();h.splice(idx,1);localStorage.setItem(sk('history'),JSON.stringify(h));updateHistCount();renderHistory();}
 function loadFromHistory(e){
   setMode('calc');
   const totalSecs=parseFloat(e.totalRaw);
@@ -900,7 +1157,10 @@ function loadFromHistory(e){
   document.getElementById('res').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// ── Copy ──────────────────────────────────────────────────────────────────────
+// ── FORMAT ────────────────────────────────────────────────────────────────────
+function fmt(s){s=Math.max(0,s);const m=Math.floor(s/60);const rem=s-m*60;const si=Math.floor(rem);const t=Math.round((rem-si)*10);if(t===10)return fmt(s+0.05);return m+':'+(String(si).padStart(2,'0'))+'.'+t;}
+
+// ── COPY ──────────────────────────────────────────────────────────────────────
 function copyResults(){
   const btn=document.getElementById('copy-btn');
   const total=document.getElementById('rtotal').textContent;
@@ -911,7 +1171,7 @@ function copyResults(){
     const name=getRunnerName(i);
     parts.push(name?`${name} (${LEGS[i].name}) ${split}`:`${LEGS[i].name} ${split}`);
   });
-  const text=`DMR ${total} — ${parts.join(' / ')}`;
+  const text=`${currentRace.abbr} ${total} — ${parts.join(' / ')}`;
   navigator.clipboard.writeText(text).then(()=>{
     btn.classList.add('copied');
     btn.innerHTML=`<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!`;
@@ -922,24 +1182,12 @@ function copyResults(){
   });
 }
 
-// ── Last rendered splits (for unit re-render) ─────────────────────────────────
-let _lastSplits=[], _lastWR={};
-
-function rerenderUnits(){
-  renderTable(_lastSplits,_lastWR);
-  renderCards(_lastSplits,_lastWR,
-    LEGS.map((_,i)=>wOn?parseInt(document.getElementById('w'+i).value)/100:0),
-    LEGS.map((_,i)=>isLocked(i))
-  );
-}
-
-// ── Main calc ─────────────────────────────────────────────────────────────────
+// ── MAIN CALC ─────────────────────────────────────────────────────────────────
 function calc(){
   const mins=parseInt(document.getElementById('im').value)||0;
   const secs=parseInt(document.getElementById('is').value)||0;
   const tenth=parseInt(document.getElementById('it').value)||0;
   const total=mins*60+secs+tenth/10;
-
   if(!total||total<=0){document.getElementById('em').style.display='block';document.getElementById('res').classList.remove('on');return;}
   document.getElementById('em').style.display='none';
 
@@ -952,12 +1200,13 @@ function calc(){
 
   if(lockedTotal>=total){lockErr.textContent='⚠ Locked splits already meet or exceed your target time.';lockErr.classList.add('show');document.getElementById('res').classList.remove('on');return;}
 
+  const legWRs=LEGS.map((_,i)=>getWRForLeg(i));
+
   if(unlockedIndices.length===0){
     const lockedSum=lockedSecs.reduce((a,b)=>a+b,0);
-    const legWRs=LEGS.map((_,i)=>getWRForLeg(i));
     document.getElementById('rtotal').textContent=fmt(lockedSum);
     document.getElementById('etxt').textContent='Just so you know, a regular calculator would have worked fine here.';
-    _lastSplits=lockedSecs;_lastWR=legWRs;
+    _lastSplits=lockedSecs;_lastLegWRs=legWRs;
     renderCards(lockedSecs,legWRs,LEGS.map(()=>0),LEGS.map(()=>true));
     renderTable(lockedSecs,legWRs);renderCumulative(lockedSecs);renderBenchLadder(lockedSum);
     document.getElementById('mnote').innerHTML='<strong>All four legs were pinned.</strong> The total is just the sum of your inputs — no distribution needed. You could have used a calculator for this one, but hey, the splits look great.';
@@ -967,36 +1216,31 @@ function calc(){
   }
 
   const remaining=total-lockedTotal;
-  // Per-leg WR references (respects Mixed per-leg gender)
-  const legWRs=LEGS.map((_,i)=>getWRForLeg(i));
   const unlockedWRSum=unlockedIndices.reduce((a,i)=>a+legWRs[i],0);
   const baseK=remaining/unlockedWRSum;
   const adjs=LEGS.map((_,i)=>wOn?parseInt(document.getElementById('w'+i).value)/100:0);
   const rawUnlocked=unlockedIndices.map(i=>baseK*legWRs[i]*(1-adjs[i]));
-  const rawUnlockedSum=rawUnlocked.reduce((a,b)=>a+b,0);
-  const scale=remaining/rawUnlockedSum;
-  const splits=LEGS.map((l,i)=>{if(isLocked(i))return lockedSecs[i];const ui=unlockedIndices.indexOf(i);return rawUnlocked[ui]*scale;});
+  const scale=remaining/rawUnlocked.reduce((a,b)=>a+b,0);
+  const splits=LEGS.map((_,i)=>{if(isLocked(i))return lockedSecs[i];const ui=unlockedIndices.indexOf(i);return rawUnlocked[ui]*scale;});
 
-  _lastSplits=splits;_lastWR=legWRs;
+  _lastSplits=splits;_lastLegWRs=legWRs;
 
   const wrTotal=legWRs.reduce((a,b)=>a+b,0);
   const pctPace=(wrTotal/total)*100;
   let elevel='';
-  if(pctPace>=95) elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — Elite / National`;
-  else if(pctPace>=84) elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — Competitive College`;
-  else if(pctPace>=72) elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — High School / Club`;
+  if(pctPace>=95)elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — Elite / National`;
+  else if(pctPace>=84)elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — Competitive College`;
+  else if(pctPace>=72)elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — High School / Club`;
   else elevel=`Running at ${pctPace.toFixed(1)}% of WR pace — Recreational`;
 
   document.getElementById('rtotal').textContent=fmt(total);
   document.getElementById('etxt').textContent=elevel;
 
   renderCards(splits,legWRs,adjs,LEGS.map((_,i)=>isLocked(i)));
-  renderTable(splits,legWRs);
-  renderCumulative(splits);
-  renderBenchLadder(total);
+  renderTable(splits,legWRs);renderCumulative(splits);renderBenchLadder(total);
 
   const gn=gender==='MX'?'mixed (per-leg)':gender==='M'?"men's":"women's";
-  document.getElementById('mnote').innerHTML=`<strong>How this works:</strong> Splits are set so every runner performs at the same percentage of the ${gn} world record for their event — currently <strong>${pctPace.toFixed(1)}% of WR pace</strong>. The 400m WR pace is dramatically faster than the 1600m WR pace, so this model correctly gives the 400m runner a much harder (faster) split relative to their event.`;
+  document.getElementById('mnote').innerHTML=`<strong>How this works:</strong> Splits are set so every runner performs at the same percentage of the ${gn} world record for their event — currently <strong>${pctPace.toFixed(1)}% of WR pace</strong>. Using world record ratios ensures equal physiological effort regardless of the large differences in speed across ${currentRace.abbr} leg distances.`;
 
   const names=LEGS.map((_,i)=>getRunnerName(i));
   saveHistory({total:fmt(total),totalRaw:total,gender:{M:'Men',F:'Women',MX:'Mixed'}[gender],genderCode:gender,legs:splits.map(s=>fmt(s)),names});
@@ -1006,7 +1250,7 @@ function calc(){
   setTimeout(()=>document.getElementById('res').scrollIntoView({behavior:'smooth',block:'start'}),50);
 }
 
-// ── Render helpers ────────────────────────────────────────────────────────────
+// ── RENDER HELPERS ────────────────────────────────────────────────────────────
 function renderCards(splits,legWRs,adjs,locked){
   const grid=document.getElementById('lgrid');grid.innerHTML='';
   splits.forEach((sp,i)=>{
@@ -1017,7 +1261,6 @@ function renderCards(splits,legWRs,adjs,locked){
     const barW=Math.min((wrRef/sp)*100,100).toFixed(1);
     const lo=sp*0.95,hi=sp*1.05;
     const rangeLine=`<div class="range-band">Range: <span>${fmt(lo)}</span> – <span>${fmt(hi)}</span></div>`;
-
     let prHTML='';
     if(prOn){
       const pr=getPRSecs(i);
@@ -1031,12 +1274,10 @@ function renderCards(splits,legWRs,adjs,locked){
         prHTML=`<div class="pr-check ${cls}">${icon} ${msg}</div>`;
       }
     }
-
     const name=getRunnerName(i);
     const runnerLine=name?`<div class="lrunner">${name}</div>`:'';
     const lockBadge=locked[i]?`<div class="locked-badge" style="background:${getColor(i)}22;border:1px solid ${getColor(i)}55;color:${getColor(i)}">&#128274; PINNED SPLIT</div>`:'';
     const adjBadge=(!locked[i]&&wOn&&adjs[i]!==0)?`<div class="lmi"><span class="lmk">Adj</span><span class="lmv">${adjs[i]>0?'+':''}${(adjs[i]*100).toFixed(0)}%</span></div>`:'';
-
     const c=document.createElement('div');c.className='lcard';
     c.innerHTML=`${lockBadge}${runnerLine}<div class="ltag">${l.order}</div><div class="ldist">${l.name}</div><div class="lsplit">${fmt(sp)}</div>${rangeLine}${prHTML}<div class="lmeta"><div class="lmi"><span class="lmk">${unitPace==='p400'?'Pace/Lap':unitPace==='pkm'?'Pace/km':'Pace/mi'}</span><span class="lmv">${fmtPace(sp,l.dist)}</span></div><div class="lmi"><span class="lmk">Speed</span><span class="lmv">${fmtSpeed(mps)}</span></div>${adjBadge}</div><div class="ebar-lbl"><span>% of WR</span><span style="color:${getColor(i)}">${pctLeg}%</span></div><div class="ebar-track"><div class="ebar-fill" style="width:${barW}%"></div></div>`;
     grid.appendChild(c);
@@ -1056,17 +1297,95 @@ function renderTable(splits,legWRs){
 
 function renderCumulative(splits){
   const cb=document.getElementById('cumbody');cb.innerHTML='';
-  const labels=['After 1200m','After 1600m','After 2400m','Finish'];
   let running=0;
   splits.forEach((sp,i)=>{
     running+=sp;
     const r=document.createElement('div');r.className='cumrow';
-    r.innerHTML=`<span class="cleg" style="color:${getColor(i)}">${labels[i]}</span><span class="ctime">${fmt(running)}</span><span class="cdelta">+${fmt(sp)}</span>`;
+    const cumDist=LEGS.slice(0,i+1).reduce((a,l)=>a+l.dist,0);
+    r.innerHTML=`<span class="cleg" style="color:${getColor(i)}">After ${cumDist}m</span><span class="ctime">${fmt(running)}</span><span class="cdelta">+${fmt(sp)}</span>`;
     cb.appendChild(r);
   });
 }
 
-// ── Theme ─────────────────────────────────────────────────────────────────────
+// ── ANALYZE ───────────────────────────────────────────────────────────────────
+function getAZSecs(i){const m=parseInt(document.getElementById('am'+i).value)||0;const s=parseInt(document.getElementById('as'+i).value)||0;const t=parseInt(document.getElementById('at'+i).value)||0;const v=m*60+s+t/10;return v>0?v:null;}
+
+function analyze(){
+  const azErr=document.getElementById('az-em');azErr.style.display='none';
+  const splits=LEGS.map((_,i)=>getAZSecs(i));
+  const names=LEGS.map((_,i)=>document.getElementById('an'+i).value.trim());
+  if(splits.filter(s=>s!==null).length<4){azErr.style.display='block';return;}
+
+  const total=splits.reduce((a,b)=>a+b,0);
+  const legWRs=LEGS.map((_,i)=>getAWRForLeg(i));
+  const pcts=splits.map((sp,i)=>(legWRs[i]/sp)*100);
+  const avgPct=pcts.reduce((a,b)=>a+b,0)/4;
+  const maxPct=Math.max(...pcts);
+  const minPct=Math.min(...pcts);
+  const spread=maxPct-minPct;
+  const eqSplits=LEGS.map((_,i)=>legWRs[i]/avgPct*100);
+  const eqTotal=eqSplits.reduce((a,b)=>a+b,0);
+  const hardestIdx=pcts.indexOf(maxPct);
+  const easiestIdx=pcts.indexOf(minPct);
+
+  let teamLevel='';
+  if(avgPct>=95)teamLevel='Elite / National';
+  else if(avgPct>=84)teamLevel='Competitive College';
+  else if(avgPct>=72)teamLevel='High School / Club';
+  else teamLevel='Recreational';
+
+  let balanceLabel='',balanceColor='';
+  if(spread<2){balanceLabel='Exceptionally balanced';balanceColor='var(--green)';}
+  else if(spread<5){balanceLabel='Well balanced';balanceColor='var(--green)';}
+  else if(spread<10){balanceLabel='Moderately uneven';balanceColor='var(--amber)';}
+  else{balanceLabel='Significantly uneven';balanceColor='var(--red)';}
+
+  document.getElementById('az-hero').innerHTML=`
+    <div class="az-stat"><div class="az-stat-val">${fmt(total)}</div><div class="az-stat-lbl">Total Time</div></div>
+    <div class="az-stat"><div class="az-stat-val">${avgPct.toFixed(1)}%</div><div class="az-stat-lbl">Avg % of WR</div></div>
+    <div class="az-stat"><div class="az-stat-val" style="color:${balanceColor}">${spread.toFixed(1)}%</div><div class="az-stat-lbl">Effort Spread</div></div>
+    <div class="az-stat"><div class="az-stat-val">${fmt(eqTotal)}</div><div class="az-stat-lbl">Equal-Effort Equiv.</div></div>
+    <div class="az-stat"><div class="az-stat-val">${teamLevel.split(' / ')[0]}</div><div class="az-stat-lbl">Performance Level</div></div>
+    <div class="az-stat"><div class="az-stat-val" style="color:${balanceColor};font-size:18px;">${balanceLabel}</div><div class="az-stat-lbl">Team Balance</div></div>`;
+
+  const bars=document.getElementById('az-bars');bars.innerHTML='';
+  [0,1,2,3].sort((a,b)=>pcts[b]-pcts[a]).forEach(i=>{
+    const r=document.createElement('div');r.className='az-bar-row';
+    r.innerHTML=`<div class="az-bar-lbl" style="color:${getColor(i)}">${LEGS[i].name}</div><div class="az-bar-track"><div class="az-bar-fill b${i}" style="width:${Math.min(pcts[i],100).toFixed(1)}%"></div></div><div class="az-bar-pct" style="color:${getColor(i)}">${pcts[i].toFixed(1)}%</div>`;
+    bars.appendChild(r);
+  });
+
+  const lcards=document.getElementById('az-lcards');lcards.innerHTML='';
+  splits.forEach((sp,i)=>{
+    const pct=pcts[i];const eq=eqSplits[i];const diff=sp-eq;
+    const isHardest=i===hardestIdx;const isEasiest=i===easiestIdx&&hardestIdx!==easiestIdx;
+    const rankBadge=isHardest?`<div class="az-rank-badge az-rank-1">&#9650; Hardest leg</div>`:isEasiest?`<div class="az-rank-badge az-rank-last">&#9660; Easiest leg</div>`:'';
+    let diffPill='';
+    if(Math.abs(diff)<0.15)diffPill=`<div class="az-diff-pill even">≈ Equal effort</div>`;
+    else if(diff<0)diffPill=`<div class="az-diff-pill fast">&#9650; ${fmt(Math.abs(diff))} harder than avg</div>`;
+    else diffPill=`<div class="az-diff-pill slow">&#9660; ${fmt(diff)} easier than avg</div>`;
+    const nameEl=names[i]?`<div class="az-runnername">${names[i]}</div>`:'';
+    const c=document.createElement('div');c.className='az-lcard';
+    c.innerHTML=`${rankBadge}${nameEl}<div class="ltag">${LEGS[i].order}</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;text-transform:uppercase;margin-bottom:10px;color:${getColor(i)}">${LEGS[i].name}</div><div class="az-effort-big">${pct.toFixed(1)}%</div><div class="az-effort-sub">of world record pace</div><div class="lmeta"><div class="lmi"><span class="lmk">Split</span><span class="lmv">${fmt(sp)}</span></div><div class="lmi"><span class="lmk">Eq. split</span><span class="lmv">${fmt(eq)}</span></div><div class="lmi"><span class="lmk">Pace/lap</span><span class="lmv">${fmt((sp/LEGS[i].dist)*400)}</span></div></div>${diffPill}<div class="ebar-lbl"><span>% of WR</span><span style="color:${getColor(i)}">${pct.toFixed(1)}%</span></div><div class="ebar-track"><div class="ebar-fill" style="background:${getColor(i)};width:${Math.min(pct,100).toFixed(1)}%"></div></div>`;
+    lcards.appendChild(c);
+  });
+
+  const hardName=names[hardestIdx]||LEGS[hardestIdx].name;
+  const easyName=names[easiestIdx]||LEGS[easiestIdx].name;
+  const gn=analyzeGender==='MX'?'mixed (per-leg)':analyzeGender==='M'?"men's":"women's";
+  const timeDiff=Math.abs(total-eqTotal);
+  const eqNote=timeDiff<0.1
+    ?`The team's total of <strong>${fmt(total)}</strong> is essentially identical to what an equal-effort lineup would have run.`
+    :total<eqTotal
+      ?`An equal-effort lineup would have run <strong>${fmt(eqTotal)}</strong> — <strong>${fmt(timeDiff)} slower</strong>. The uneven distribution actually benefited the total.`
+      :`An equal-effort lineup would have run <strong>${fmt(eqTotal)}</strong> — <strong>${fmt(timeDiff)} faster</strong>. A more balanced workload could improve the total time.`;
+  document.getElementById('az-balance').innerHTML=`<strong>Team balance: <span style="color:${balanceColor}">${balanceLabel}</span></strong> — ${spread.toFixed(1)}% spread across legs. The team averaged <strong>${avgPct.toFixed(1)}% of ${gn} WR pace</strong> (${teamLevel.toLowerCase()} level). <strong>${hardName}</strong> carried the hardest assignment at <strong>${pcts[hardestIdx].toFixed(1)}%</strong> of WR; <strong>${easyName}</strong> had the most comfortable leg at <strong>${pcts[easiestIdx].toFixed(1)}%</strong>. ${eqNote}`;
+
+  document.getElementById('az-res').classList.add('on');
+  setTimeout(()=>document.getElementById('az-res').scrollIntoView({behavior:'smooth',block:'start'}),50);
+}
+
+// ── THEME ─────────────────────────────────────────────────────────────────────
 function togTheme(){
   const light=document.body.classList.toggle('light');
   document.getElementById('theme-icon').textContent=light?'🌙':'☀️';
@@ -1080,119 +1399,34 @@ function togTheme(){
     document.getElementById('theme-lbl').textContent='Dark';
   }
 })();
-// ── Analyzer ──────────────────────────────────────────────────────────────────
-function getAZSecs(i){
-  const m=parseInt(document.getElementById('am'+i).value)||0;
-  const s=parseInt(document.getElementById('as'+i).value)||0;
-  const t=parseInt(document.getElementById('at'+i).value)||0;
-  const v=m*60+s+t/10; return v>0?v:null;
-}
 
-function analyze(){
-  const azErr=document.getElementById('az-em');
-  azErr.style.display='none';
-  const splits=LEGS.map((_,i)=>getAZSecs(i));
-  const names=LEGS.map((_,i)=>document.getElementById('an'+i).value.trim());
-  if(splits.filter(s=>s!==null).length<4){azErr.style.display='block';return;}
+// ── ENTER KEY ─────────────────────────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&document.getElementById('screen-calc').classList.contains('active')){
+    const onAnalyze=document.getElementById('page-analyze').classList.contains('active');
+    if(onAnalyze)analyze();else calc();
+  }
+});
 
-  const total=splits.reduce((a,b)=>a+b,0);
-  // Per-leg WR references
-  const legWRs=LEGS.map((_,i)=>getAWRForLeg(i));
-  const pcts=splits.map((sp,i)=>(legWRs[i]/sp)*100);
-  const avgPct=pcts.reduce((a,b)=>a+b,0)/4;
-  const maxPct=Math.max(...pcts);
-  const minPct=Math.min(...pcts);
-  const spread=maxPct-minPct;
-  const eqSplits=LEGS.map((_,i)=>legWRs[i]/avgPct*100);
-  const eqTotal=eqSplits.reduce((a,b)=>a+b,0);
-  const hardestIdx=pcts.indexOf(maxPct);
-  const easiestIdx=pcts.indexOf(minPct);
-
-  let teamLevel='';
-  if(avgPct>=95) teamLevel='Elite / National';
-  else if(avgPct>=84) teamLevel='Competitive College';
-  else if(avgPct>=72) teamLevel='High School / Club';
-  else teamLevel='Recreational';
-
-  let balanceLabel='',balanceColor='';
-  if(spread<2){balanceLabel='Exceptionally balanced';balanceColor='var(--green)';}
-  else if(spread<5){balanceLabel='Well balanced';balanceColor='var(--green)';}
-  else if(spread<10){balanceLabel='Moderately uneven';balanceColor='var(--amber)';}
-  else{balanceLabel='Significantly uneven';balanceColor='var(--red)';}
-
-  // Hero stats
-  document.getElementById('az-hero').innerHTML=`
-    <div class="az-stat"><div class="az-stat-val">${fmt(total)}</div><div class="az-stat-lbl">Total Time</div></div>
-    <div class="az-stat"><div class="az-stat-val">${avgPct.toFixed(1)}%</div><div class="az-stat-lbl">Avg % of WR</div></div>
-    <div class="az-stat"><div class="az-stat-val" style="color:${balanceColor}">${spread.toFixed(1)}%</div><div class="az-stat-lbl">Effort Spread</div></div>
-    <div class="az-stat"><div class="az-stat-val">${fmt(eqTotal)}</div><div class="az-stat-lbl">Equal-Effort Equiv.</div></div>
-    <div class="az-stat"><div class="az-stat-val">${teamLevel.split(' / ')[0]}</div><div class="az-stat-lbl">Performance Level</div></div>
-    <div class="az-stat"><div class="az-stat-val" style="color:${balanceColor};font-size:18px;">${balanceLabel}</div><div class="az-stat-lbl">Team Balance</div></div>`;
-
-  // Effort bar chart — sorted hardest first
-  const bars=document.getElementById('az-bars');
-  bars.innerHTML='';
-  [0,1,2,3].sort((a,b)=>pcts[b]-pcts[a]).forEach(i=>{
-    const r=document.createElement('div');r.className='az-bar-row';
-    r.innerHTML=`<div class="az-bar-lbl" style="color:${getColor(i)}">${LEGS[i].name}</div><div class="az-bar-track"><div class="az-bar-fill b${i}" style="width:${Math.min(pcts[i],100).toFixed(1)}%"></div></div><div class="az-bar-pct" style="color:${getColor(i)}">${pcts[i].toFixed(1)}%</div>`;
-    bars.appendChild(r);
-  });
-
-  // Per-leg analysis cards
-  const lcards=document.getElementById('az-lcards');
-  lcards.innerHTML='';
-  splits.forEach((sp,i)=>{
-    const pct=pcts[i];
-    const eq=eqSplits[i];
-    const diff=sp-eq;
-    const isHardest=i===hardestIdx;
-    const isEasiest=i===easiestIdx&&hardestIdx!==easiestIdx;
-    const rankBadge=isHardest?`<div class="az-rank-badge az-rank-1">&#9650; Hardest leg</div>`:isEasiest?`<div class="az-rank-badge az-rank-last">&#9660; Easiest leg</div>`:'';
-    let diffPill='';
-    if(Math.abs(diff)<0.15) diffPill=`<div class="az-diff-pill even">≈ Equal effort</div>`;
-    else if(diff<0) diffPill=`<div class="az-diff-pill fast">&#9650; ${fmt(Math.abs(diff))} harder than avg</div>`;
-    else diffPill=`<div class="az-diff-pill slow">&#9660; ${fmt(diff)} easier than avg</div>`;
-    const nameEl=names[i]?`<div class="az-runnername">${names[i]}</div>`:'';
-    const c=document.createElement('div');c.className='az-lcard';
-    c.innerHTML=`${rankBadge}${nameEl}<div class="ltag">${LEGS[i].order}</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;text-transform:uppercase;margin-bottom:10px;color:${getColor(i)}">${LEGS[i].name}</div><div class="az-effort-big">${pct.toFixed(1)}%</div><div class="az-effort-sub">of world record pace</div><div class="lmeta"><div class="lmi"><span class="lmk">Split</span><span class="lmv">${fmt(sp)}</span></div><div class="lmi"><span class="lmk">Eq. split</span><span class="lmv">${fmt(eq)}</span></div><div class="lmi"><span class="lmk">Pace/lap</span><span class="lmv">${fmt((sp/LEGS[i].dist)*400)}</span></div></div>${diffPill}<div class="ebar-lbl"><span>% of WR</span><span style="color:${getColor(i)}">${pct.toFixed(1)}%</span></div><div class="ebar-track"><div class="ebar-fill" style="background:${getColor(i)};width:${Math.min(pct,100).toFixed(1)}%"></div></div>`;
-    lcards.appendChild(c);
-  });
-
-  // Balance summary
-  const hardName=names[hardestIdx]||LEGS[hardestIdx].name;
-  const easyName=names[easiestIdx]||LEGS[easiestIdx].name;
-  const gn=analyzeGender==='MX'?'mixed (per-leg)':analyzeGender==='M'?"men's":"women's";
-  const timeDiff=Math.abs(total-eqTotal);
-  const eqNote=timeDiff<0.1
-    ?`The team's total of <strong>${fmt(total)}</strong> is essentially identical to what an equal-effort lineup would have run.`
-    :total<eqTotal
-      ?`An equal-effort lineup would have run <strong>${fmt(eqTotal)}</strong> — <strong>${fmt(timeDiff)} slower</strong>. The uneven distribution actually benefited the total time.`
-      :`An equal-effort lineup would have run <strong>${fmt(eqTotal)}</strong> — <strong>${fmt(timeDiff)} faster</strong>. A more balanced workload could improve the team's time.`;
-  document.getElementById('az-balance').innerHTML=`<strong>Team balance: <span style="color:${balanceColor}">${balanceLabel}</span></strong> — ${spread.toFixed(1)}% spread across legs. The team averaged <strong>${avgPct.toFixed(1)}% of ${gn} WR pace</strong> (${teamLevel.toLowerCase()} level). <strong>${hardName}</strong> carried the hardest assignment at <strong>${pcts[hardestIdx].toFixed(1)}%</strong> of WR; <strong>${easyName}</strong> had the most comfortable leg at <strong>${pcts[easiestIdx].toFixed(1)}%</strong>. ${eqNote}`;
-
-  document.getElementById('az-res').classList.add('on');
-  setTimeout(()=>document.getElementById('az-res').scrollIntoView({behavior:'smooth',block:'start'}),50);
-}
-
-document.addEventListener('keydown',e=>{if(e.key==='Enter'){const onAnalyze=document.getElementById('page-analyze').classList.contains('active');if(onAnalyze)analyze();else calc();}});
+// ── TIME INPUT CLAMPS ─────────────────────────────────────────────────────────
 document.getElementById('is').addEventListener('input',function(){if(parseInt(this.value)>59)this.value=59;});
 document.getElementById('it').addEventListener('input',function(){if(parseInt(this.value)>9)this.value=9;});
 document.getElementById('bs').addEventListener('input',function(){if(parseInt(this.value)>59)this.value=59;});
 document.getElementById('bt').addEventListener('input',function(){if(parseInt(this.value)>9)this.value=9;});
-[0,1,2,3].forEach(i=>{
-  document.getElementById('ls'+i).addEventListener('input',function(){if(parseInt(this.value)>59)this.value=59;});
-  document.getElementById('lt'+i).addEventListener('input',function(){if(parseInt(this.value)>9)this.value=9;});
-  document.getElementById('ps'+i).addEventListener('input',function(){if(parseInt(this.value)>59)this.value=59;});
-  document.getElementById('pt'+i).addEventListener('input',function(){if(parseInt(this.value)>9)this.value=9;});
-});
 
-// Init
-updateHistCount();updateBenchCount();
-// Clamp analyze inputs
-[0,1,2,3].forEach(i=>{
-  document.getElementById('as'+i).addEventListener('input',function(){if(parseInt(this.value)>59)this.value=59;});
-  document.getElementById('at'+i).addEventListener('input',function(){if(parseInt(this.value)>9)this.value=9;});
-});
+// ── INIT ──────────────────────────────────
+// ── EMAIL (CF-safe) ───────────────────────────────────────────────────────────
+(function(){
+  const u='kyledoherty281';const d='gmail.com';
+  const card=document.getElementById('email-card');
+  const disp=document.getElementById('email-display');
+  if(card){card.href='mailto:'+u+'@'+d;}
+  if(disp){disp.textContent=u+'@'+d;}
+})();
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+openRace('dmr');
+goHome();
 </script>
 </body>
 </html>
