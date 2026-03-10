@@ -2,8 +2,8 @@
 
 A standalone split calculator and performance analyzer for the Distance Medley Relay (DMR) in track and field. Built as a single HTML file — no installation, no dependencies, no internet connection required after the page loads.
 
-**[View Live →]([https://yourusername.github.io/your-repo-name](https://doherty-enterprises.github.io/DMR-Calculator/))**
-https://doherty-enterprises.github.io/DMR-Calculator/
+**[View Live →]([https://yourusername.github.io/your-repo-name](https://doherty-enterprises.github.io/Medley-Relay-Split-Calculator/))**
+https://doherty-enterprises.github.io/Medley-Relay-Split-Calculator/
 
 ---
 
