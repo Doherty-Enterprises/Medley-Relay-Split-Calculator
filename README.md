@@ -4,14 +4,17 @@ A split calculator and performance analyzer for medley relay events in track and
 View Live → https://doherty-enterprises.github.io/Medley-Relay-Split-Calculator/
 
 Events
+
 EventLegsDMR — Distance Medley Relay1200m · 400m · 800m · 1600mSMR Short — Sprint Medley Relay100m · 100m · 200m · 400mSMR Long — Sprint Medley Relay200m · 200m · 400m · 800m
 
 What It Does
+
 Two modes for each event:
 Calculate Splits — Enter a target finish time and get a realistic split for each leg, based on equal physiological effort across all four runners.
 Analyze Performance — Enter your team's actual splits from a completed race and see how evenly the workload was distributed, who ran the hardest and easiest legs, and how the team performed relative to world record pace.
 
 The Math
+
 Most pace calculators use the Riegel fatigue formula, which models a single athlete's performance across varying distances. That doesn't apply to relays, where each leg is run by a different person.
 This calculator uses a world record pace ratio model instead. Equal effort is defined as every runner performing at the same percentage of the world record for their specific event:
 split = k × WR_for_that_event
@@ -22,6 +25,7 @@ DistanceMenWomenNote100m9.58s10.49sBolt (2009) / Griffith-Joyner (1988)200m19.19
 *The 1200m and 1600m are not sanctioned World Athletics events. Reference times are mathematically derived from adjacent world records.
 
 Features
+
 Calculate Mode
 
 Target time input with Men / Women / Mixed gender selection
@@ -52,10 +56,12 @@ Per-event calculation history and benchmarks stored separately per event
 
 
 Usage
+
 Download index.html and open it in any modern browser. No server required.
 Or visit the live version linked above.
 
 About
+
 Built by Kyle Doherty, a cross country and track & field runner at El Toro High School. The methodology was reviewed by national-qualifying athletes and coaches before release.
 For bugs, suggestions, or questions: kyledoherty281@gmail.com
 
