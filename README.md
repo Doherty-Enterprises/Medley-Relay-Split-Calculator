@@ -108,3 +108,5 @@ Barlow Condensed and Share Tech Mono via Google Fonts
 
 
 Assisted by the AI agent Claude
+
+Fully written by Claude, developed and synthesized by human work
